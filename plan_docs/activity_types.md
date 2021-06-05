@@ -1,7 +1,7 @@
 activity types:
 
-- executor: system submit form, system follows an URL redirect. There are two type of executor, 
-    2. `exec`
+- executor: system submit form, system follows an URL redirect.
+    1. `exec`
         - call api with `curl`, *http, https, tcp*
         - download something with `wget`, `curl`, *ftp, sftp, http, https*
         - command: from commnd line
