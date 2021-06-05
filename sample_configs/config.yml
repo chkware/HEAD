@@ -1,0 +1,10 @@
+plugin:
+  - name: "http_client@1.0.1-984243"
+    as: http
+
+tests:
+  home: ./tests/home.yaml
+  login: ./tests/login.yaml
+  registration:
+    - ./tests/registration/with-email.yaml
+    - ./tests/registration/with-social.yaml

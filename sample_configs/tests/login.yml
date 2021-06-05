@@ -1,0 +1,44 @@
+imports: 
+  - {resource: ./vars.yml}
+
+# what to test?
+# how to test?
+  # what data to use?
+# what to expect?
+# how to generate report?
+
+# steps:
+#   - describe: 'Go to example site' # optional
+#     as: unique_id_for_this_step # required
+#     it: ~ # required
+#     params: ~  # optional
+#     expect: unique_id_for_this_step_exception # optional
+#     expose: ~  # optional
+#     assert: ~ # required
+
+#### sample 1 ####
+cases:
+  # meta:
+  #   executor: api-requestor
+  #   report: ~
+  #   seeders: ~
+  #   validators: ~
+
+  name: Check response when valid email and password is entered
+  request:
+    body:
+      email: 'all@bastion.com'
+      password: '123456'
+    headers: headers
+    method: POST
+    url: '{base_url}/login'
+
+#### sample 2 ####
+cases:
+  - describe: 'Check response when valid email and password is entered'
+    it: ~
+    data:
+      email: 'all@bastion.com'
+      password: '123456'
+    expect:
+      - "access_token: {jwt_token}"
