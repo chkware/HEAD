@@ -1,0 +1,10 @@
+plugin:
+  - name: "name of the plugin"
+    machine_name: nameOfThePlugin
+    exec: "/command/store/path/on/this/system -f --yel=1"
+
+
+## default system config
+default:
+  save:
+    plugin: local # to store a file locally

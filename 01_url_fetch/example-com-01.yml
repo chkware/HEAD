@@ -1,0 +1,10 @@
+fetch: "https://example.com/"
+
+# to save something in the storage
+save:
+  plugin: ~ # means default plugin to use, same as not mention it
+  path: "/path/on/system/to/save/the/file"
+  name: "file_name_to_save_as"
+  ext: ".file_extension"
+
+test: ~
