@@ -1,0 +1,16 @@
+# plugin:
+#   - name: "name of the plugin"
+#     machine_name: nameOfThePlugin
+#     exec: "/command/store/path/on/this/system -f --yel=1"
+
+
+## default system config
+# activity
+# -- save
+# -- fetch
+
+# defaults:
+#   save:
+#     plugin: local_store # to store a file locally
+#   fetch:
+#     plugin: curl # to use curl
