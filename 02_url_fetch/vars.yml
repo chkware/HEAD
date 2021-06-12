@@ -1,0 +1,20 @@
+#----------------------------------
+# Three type of variables:
+# 1. constant: user definded constants, ${constant.headers}
+# 2. computed: computed dynmically by dochk, ie: http_method, content_length, etc. 
+# eg: ${computed.content_length}
+# 3. variable: user defined variable to be used locally or gobally. 
+# eg: ${variable.response}
+#----------------------------------
+---
+constant:
+  headers:
+    - "User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)"
+    - "Accept-Language: en-us"
+    - "Accept-Encoding: gzip, deflate"
+  base_url: "https://example.com"
+variable:
+  global:
+    response: ~
+    
+    
