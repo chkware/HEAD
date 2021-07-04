@@ -1,0 +1,24 @@
+#=============================================================
+# API definitiion file usually openapi yaml format
+#
+# key: `definition`
+# value: absolute path or relative path from the dir you run dochk command
+#=============================================================
+api_definition_file: ./api-docs.yml
+
+
+# can flow be accessible as ${flows.flow_users_posts.flow_one}
+flows:
+# these are flow collection
+- title: flow_users_posts
+  # either flow_definition_file or 
+  flow_definition_file: ./users.dochk.yml
+  # or flow_definition
+  flow_definition:
+  - title: flow_one
+    description: "get all users"
+    steps:
+      - path: /users
+      
+      # @TODO need to support ${res.items.1.id}
+      - path: /users/{userId}/posts
