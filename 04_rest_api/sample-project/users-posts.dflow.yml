@@ -1,0 +1,7 @@
+# these are flow collection
+title: "Get all users' posts"
+steps:
+  - flow: user-list
+
+  # @TODO need to support ${res.items.1.id}
+  - path: /users/{userId}/posts
