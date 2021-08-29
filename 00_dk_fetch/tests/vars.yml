@@ -1,6 +1,0 @@
-vars:
-  - base_url: https://something.com/api/v0/
-  - name: headers
-    values:
-      - 'Content-Type: application/json'
-      - 'Accept-Language: en_GB'

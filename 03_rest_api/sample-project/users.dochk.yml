@@ -1,7 +1,0 @@
-  - title: flow_one
-    description: "get all users"
-    steps:
-      - path: /users
-      
-      # @TODO need to support ${res.items.1.id}
-      - path: /users/{userId}/posts
