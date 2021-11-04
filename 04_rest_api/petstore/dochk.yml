@@ -1,12 +1,16 @@
 #=============================================================
 # API definitiion file usually openapi 3.x yaml format
 #=============================================================
-api_docs: ./api-docs.yml
+apidoc: ./api-docs.yml
 
 #=============================================================
-# Paths to look for .dflow.yml and dspec.yml files
+# Paths to look for .spec.yml files
 # @todo need to cache all file list
 # @todo cache rebuild needed --no-cache
+#
 #=============================================================
-test_path:
-  - ./
+# testbase: ~ # means default config, which is current dir
+# testbase: ./testbase # relative path
+# testbase: /User/mahmudul.hasan/testbase # absolute path
+#=============================================================
+testbase: ~
