@@ -1,0 +1,19 @@
+---
+name: cross_check_pets
+details: 'Cross check pets'
+
+
+# set content = fetch(findPets)
+# set pets = parse_list(content, '#/components/schemas/Pet')
+# loop
+#   set pet = next(pets)
+#   if pet != nil
+#     set id = get_attribute(pet, id)
+#     set name = get_attribute(pet, name)
+#     set content_i = fetch('find pet by id')
+#     set pet = parse(content_i, '#/components/schemas/Pet')
+#     set id_single = get_attribute(pet, id)
+#     if id_single == id
+#       echo('Ok')
+#     else
+#       echo('Fail')
