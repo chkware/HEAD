@@ -1,8 +1,15 @@
 ---
 name: cross_check_pets
-details: 'Cross check pets'
+# ------------------------
+# declarative
+# ------------------------
 
 
+
+
+# ------------------------
+# imparative
+# ------------------------
 # set content = fetch(findPets)
 # set pets = parse_list(content, '#/components/schemas/Pet')
 # loop
