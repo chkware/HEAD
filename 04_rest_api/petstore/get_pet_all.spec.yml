@@ -1,0 +1,23 @@
+---
+describe: get_pet_all
+
+context:
+  path: apidoc.operationId.findPets
+  before: ~
+  after: ~
+  before_each: ~
+  after_each: ~
+
+specs:
+  - it: get_all
+    expect: pass
+
+  - it: get_with_string
+    expect: fail
+    with:
+      id: 'invalid string'
+        
+  - it: get_with_float
+    expect: fail
+    with:
+      id: 3.5
