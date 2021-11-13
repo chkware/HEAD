@@ -9,6 +9,8 @@ activity types:
 
 - validator: system validate information received, with given sample
     - validate with static data
+        - in-place data
+        - parameterized data
     - validate with regex
     - validate from DB value
     - validate from file text: text, csv, excel
