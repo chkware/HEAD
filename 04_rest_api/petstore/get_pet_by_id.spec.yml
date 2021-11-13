@@ -20,6 +20,11 @@ specs:
     with:
       id: 'invalid string'
   
+  - it: get_without_id
+    expect: fail
+    without:
+      - id
+  
   - it: get_with_float
     expect: fail
     with:
