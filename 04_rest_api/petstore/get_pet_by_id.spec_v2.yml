@@ -1,7 +1,19 @@
 ---
+# need doc versioning because versions might 
+# support more / deprecate features
+version: 0.1 
+
 describe: get_pet_by_id
 
 context:
+  # need to compare with postman
+  # because postman can be used along 
+
+  # need to check with other api documentation format
+  # may be support other driver
+  selector: apidoc.paths # not stisfied yet?!
+  type: route # or operationId
+    
   path: apidoc.operationId.'find pet by id'
   # before: ~
   # after: ~
