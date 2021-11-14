@@ -3,11 +3,14 @@ describe: cross_check_pets
 # ------------------------
 # declarative
 # ------------------------
-context:
-  - spec: get_pet_all
-    params: ~
-  - spec: get_pet_by_id
-    params: ~
+
+# context:
+#   specs:
+#     - get_pet_all.get_all
+#     - get_pet_by_id.get_with_number
+
+flows:
+  - it: check_pets
 
 
 
