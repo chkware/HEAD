@@ -3,10 +3,6 @@ describe: get_pet_by_id
 
 context:
   path: apidoc.operationId.'find pet by id'
-  before: ~
-  after: ~
-  before_each: ~
-  after_each: ~
 
 params:
   id: int
