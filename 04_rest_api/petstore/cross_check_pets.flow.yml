@@ -3,7 +3,11 @@ describe: cross_check_pets
 # ------------------------
 # declarative
 # ------------------------
-
+context:
+  - spec: get_pet_all
+    params: ~
+  - spec: get_pet_by_id
+    params: ~
 
 
 
