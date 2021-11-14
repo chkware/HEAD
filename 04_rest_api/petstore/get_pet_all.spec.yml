@@ -3,21 +3,24 @@ describe: get_pet_all
 
 context:
   path: apidoc.operationId.findPets
-  before: ~
-  after: ~
-  before_each: ~
-  after_each: ~
+  # before: ~
+  # after: ~
+  # before_each: ~
+  # after_each: ~
+
+params:
+  limit: int
 
 specs:
   - it: get_all
     expect: pass
 
-  - it: get_with_string
+  - it: get_with_page
     expect: fail
-    with:
-      id: 'invalid string'
-        
-  - it: get_with_float
-    expect: fail
-    with:
-      id: 3.5
+    with: # supply static data
+      limit: 15
+
+  - it: get_with_page_from_arg
+    expect: pass
+    with: # same if you don't supply
+      limit: ~ # this variable
