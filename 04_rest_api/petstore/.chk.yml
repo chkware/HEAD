@@ -16,4 +16,4 @@ definition:
 # filePath: ./some-folder # relative path
 # filePath: /User/mahmudul.hasan/testbase # absolute path
 #=============================================================
-filePath: ~
+file_path: ~
