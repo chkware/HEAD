@@ -1,7 +1,10 @@
 #=============================================================
 # API definitiion file usually openapi 3.x yaml format
+# API definitiion file usually openapi 3.x yaml format
 #=============================================================
-apidoc: ./api-docs.yml
+definition: 
+  - type: self
+    path: ~
 
 #=============================================================
 # Paths to look for .spec.yml files
@@ -9,8 +12,8 @@ apidoc: ./api-docs.yml
 # @todo cache rebuild needed --no-cache
 #
 #=============================================================
-# testbase: ~ # means default config, which is current dir
-# testbase: ./testbase # relative path
-# testbase: /User/mahmudul.hasan/testbase # absolute path
+# filePath: ~ # means default config, which is current dir
+# filePath: ./some-folder # relative path
+# filePath: /User/mahmudul.hasan/testbase # absolute path
 #=============================================================
-testbase: ~
+filePath: ~
