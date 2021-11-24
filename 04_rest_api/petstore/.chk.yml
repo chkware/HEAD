@@ -3,7 +3,8 @@
 # API definitiion file usually openapi 3.x yaml format
 #=============================================================
 definitions: 
-  - type: self
+  - name: self
+    default: true
     path: ~
 
 #=============================================================
@@ -17,3 +18,14 @@ definitions:
 # filePath: /User/mahmudul.hasan/testbase # absolute path
 #=============================================================
 file_path: ~
+
+#=============================================================
+# drivers to use to make api request
+#=============================================================
+drivers:
+  - name: cURL
+    default: true
+    payload: app_request # alternative to context.driver_payload in .spec.yml files
+
+  - name: native
+    kind: ~
