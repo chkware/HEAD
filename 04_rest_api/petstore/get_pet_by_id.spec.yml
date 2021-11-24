@@ -1,7 +1,7 @@
 ---
 version: 0.1
 describe: get_pet_by_id
-context: self.request
+context: ~
 
 vars:
   id: int
@@ -29,8 +29,6 @@ specs:
     with:
       id: 3.5
 
-
-context_meta:
-  request:
-    slug: ${global.server}/pets/${id}
-    method: GET
+app_request:
+  slug: ${global.server}/pets/${id}
+  method: GET
