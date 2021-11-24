@@ -13,11 +13,11 @@ definitions:
 # @todo cache rebuild needed --no-cache
 #
 #=============================================================
-# filePath: ~ # means default config, which is current dir
+# filePath: . # means default config, which is current dir
 # filePath: ./some-folder # relative path
 # filePath: /User/mahmudul.hasan/testbase # absolute path
 #=============================================================
-file_path: ~
+file_path: .
 
 #=============================================================
 # drivers to use to make api request
