@@ -2,7 +2,7 @@
 # API definitiion file usually openapi 3.x yaml format
 # API definitiion file usually openapi 3.x yaml format
 #=============================================================
-definition: 
+definitions: 
   - type: self
     path: ~
 

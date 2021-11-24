@@ -1,18 +1,17 @@
 ---
+version: 0.1
 describe: get_pet_by_id
+context: self.request
 
-context:
-  path: apidoc.operationId.'find pet by id'
-  # before: ~
-  # after: ~
-  # before_each: ~
-  # after_each: ~
-
-params:
+vars:
   id: int
 
 specs:
   - it: get_with_number
+    expect: pass
+  
+  - it: get_with_number_range
+    with: :range 1..20
     expect: pass
   
   - it: get_with_string
@@ -29,3 +28,9 @@ specs:
     expect: fail
     with:
       id: 3.5
+
+
+context_meta:
+  request:
+    slug: ${global.server}/pets/${id}
+    method: GET
