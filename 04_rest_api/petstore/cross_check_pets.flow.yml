@@ -1,16 +1,15 @@
 ---
+version: 0.1
 describe: cross_check_pets
-# ------------------------
-# declarative
-# ------------------------
 
-# context:
-#   specs:
-#     - get_pet_all.get_all
-#     - get_pet_by_id.get_with_number
+vars:
+  param1: int
+  param2: string
 
 flows:
   - it: check_pets
+    do:
+      - set content [:fetch specs.get_pet_by_id.get_with_number]
 
 
 
