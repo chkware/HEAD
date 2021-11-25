@@ -32,7 +32,7 @@ request context information for current spec. format `<definition>.<tags_under_c
     - var1: type
 
 definition of variables to be used. 
-types: scaler(`int`, `double`, `string`), composite(`list`, `dict`, `tuple`), abstruct(`void`, `any`)
+types: scaler(`bool`, `int`, `double`, `string`), composite(`list`, `dict`, `tuple`), abstract(`void`, `any`)
 
 variables are of two types: `scoped` and `global`. see **file** section for `global` variable files. `scoped` variables are defined with _vars_ keyword.
 
