@@ -32,10 +32,6 @@
 ### Functions doc
 
 ```
-def: Arg
-ex:  (Arg)
-```
-```
 def: Expose var1
 ex:  (Expose pet_name)
 ```
