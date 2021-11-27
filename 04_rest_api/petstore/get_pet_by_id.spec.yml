@@ -1,34 +1,46 @@
 ---
 version: 0.1
-describe: get_pet_by_id
-context: ~
-
-vars:
-  id: int
+# describe: get_pet_by_id
 
 specs:
   - it: get_with_number
-    expect: pass
-  
-  - it: get_with_number_range
-    with: :range 1..20
+    with: 
+      pet_id: 1
+      server: ${global.server}
     expect: pass
   
   - it: get_with_string
     expect: fail
     with:
       id: 'invalid string'
+      server: ${global.server}
   
   - it: get_without_id
     expect: fail
-    without:
-      - id
+    with:
+      server: ${global.server}
+    without: [id]
   
   - it: get_with_float
     expect: fail
     with:
       id: 3.5
 
-app_request:
-  slug: ${global.server}/pets/${id}
-  method: GET
+vars:
+  models:
+    pet:
+      id: integer
+      name: required|string
+      breed: required|string|in:cat,dog
+
+do: |
+  (Set pet (fetch.GET %{server}/pets/%{pet_id}"))
+  (Assert )
+  (Expose pet)
+
+
+
+# need a way to export values with named parameters and type
+# need response parsing
+# need response validation
+# need way to define context params
