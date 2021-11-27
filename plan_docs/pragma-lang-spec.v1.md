@@ -40,8 +40,8 @@ def: Expose var1
 ex:  (Expose pet_name)
 ```
 ```
-def: Set variableName value
-ex:  Set semVer "0.1.0"
+def: Var variableName value
+ex:  Var semVer "0.1.0"
 ```
 ```
 # not here
