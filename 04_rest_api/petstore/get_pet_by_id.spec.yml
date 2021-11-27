@@ -28,11 +28,12 @@ vars:
 
   # think about model more
   # var type & validation criteria placement conflict
-  models:
-    pet:
-      id: integer
-      name: required|string
-      breed: required|string|in:cat,dog
+  
+  # models:
+  #   pet:
+  #     id: integer
+  #     name: required|string
+  #     breed: required|string|in:cat,dog
 
 do: |
   # import system libs
