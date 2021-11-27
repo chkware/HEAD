@@ -1,6 +1,6 @@
 ---
 version: 0.1
-# describe: get_pet_by_id
+describe: get_pet_by_id.{spec} {pet_id}
 
 specs:
   - it: get_with_number
@@ -27,6 +27,10 @@ specs:
       id: 3.5
 
 vars:
+  pet_id: integer
+
+  # think about model more
+  # var type & validation criteria placement conflict
   models:
     pet:
       id: integer
