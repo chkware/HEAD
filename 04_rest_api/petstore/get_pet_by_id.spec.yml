@@ -34,8 +34,21 @@ vars:
       breed: required|string|in:cat,dog
 
 do: |
-  (Set pet (fetch.GET %{server}/pets/%{pet_id}"))
-  (Assert )
+  # import system libs
+  (Use fetch)
+  (Use assert)
+  (Use parse)
+
+  # call api
+  (Var pet_str (fetch.GET "%{server}/pets/%{pet_id}"))
+
+  # parse response to json
+  (Var pet (parse.ParseJson pet_str models.pet))
+
+  # assert with model
+  (assert.Assert pet models.pet)
+
+  # export to caller
   (Expose pet)
 
 
