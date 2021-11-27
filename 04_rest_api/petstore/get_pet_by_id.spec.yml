@@ -6,19 +6,15 @@ specs:
   - it: get_with_number
     with: 
       pet_id: 1
-      server: ${global.server}
     expect: pass
   
   - it: get_with_string
     expect: fail
     with:
       id: 'invalid string'
-      server: ${global.server}
   
   - it: get_without_id
     expect: fail
-    with:
-      server: ${global.server}
     without: [id]
   
   - it: get_with_float
@@ -27,7 +23,8 @@ specs:
       id: 3.5
 
 vars:
-  pet_id: integer
+  pet_id: 
+  server: ${global.server}
 
   # think about model more
   # var type & validation criteria placement conflict
@@ -54,10 +51,3 @@ do: |
 
   # export to caller
   (Expose pet)
-
-
-
-# need a way to export values with named parameters and type
-# need response parsing
-# need response validation
-# need way to define context params
