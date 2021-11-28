@@ -36,18 +36,18 @@ vars:
 
 do: |
   # import system libs
-  (Use fetch)
-  (Use assert)
-  (Use parse)
+  Use fetch
+  Use assert
+  Use parse
 
   # call api
-  (Var pet_str (fetch.GET "%{server}/pets/%{pet_id}"))
+  Var pet_str (fetch.GET "%{server}/pets/%{pet_id}")
 
   # parse response to json
-  (Var pet (parse.ParseJson pet_str model_pet))
+  Var pet (parse.ParseJson pet_str model_pet)
 
   # assert with model
-  (assert.Assert pet models.pet)
+  assert.Assert pet models.pet
 
   # export to caller
-  (Expose pet)
+  Expose pet
