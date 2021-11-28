@@ -1,26 +1,53 @@
 ---
-describe: get_pet_all
-
-context:
-  path: apidoc.operationId.findPets
-  # before: ~
-  # after: ~
-  # before_each: ~
-  # after_each: ~
-
-params:
-  limit: int
+version: 0.1
+describe: get_pet_all.{spec?} {per_page?} {page?}
 
 specs:
-  - it: get_all
-    expect: pass
-
   - it: get_with_page
-    expect: fail
-    with: # supply static data
-      limit: 15
+    default: true
+    expect: pass
+    with: ~
 
   - it: get_with_page_from_arg
     expect: pass
-    with: # same if you don't supply
-      limit: ~ # this variable
+    with:
+      per_page: 100
+      page: 200
+
+  - it: get_with_page_as_string
+    expect: pass
+    with:
+      per_page: 100
+      page: "invalid str"
+
+  - it: get_with_page_as_string
+    expect: pass
+    with:
+      per_page: "invalid str"
+      page: 100
+
+vars:
+  page: 0
+  per_page: ${global.page_size.regular}
+  server: ${global.server}
+  url: ${global.server}/pets?page=${page}&per_page=${per_page}
+  model_pets:
+    _ref_: ${global.models.collect}
+    data.*: "required|of_type:${specs.get_pet_by_id.model_pet}"
+
+do: |
+  # 1st call
+  # --------
+
+  # make request
+  Var resp (http.GET url)
+
+  # parse json
+  Var pets (parse.Json resp model_pets)
+
+  # expose pets to callee
+  Expose pets
+
+
+
+

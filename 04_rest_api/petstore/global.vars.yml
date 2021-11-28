@@ -1,2 +1,20 @@
 ---
+# server config
 server: http://0.0.0.0/api/v1
+
+# pagination
+page_size:
+  regular: 15
+
+models:
+  collect: {
+    "meta": "required|object",
+    "meta.total": "required|integer",
+    "meta.count": "required|integer",
+    "links": "required|object",
+    "links.first": "required|url",
+    "links.last": "required|url",
+    "links.prev": "required|either_or:url,null",
+    "links.next": "required|either_or:url,null",
+    "data": "nullable|array"
+  }
