@@ -36,6 +36,16 @@ types: scaler(`bool`, `int`, `double`, `string`), composite(`list`, `dict`, `tup
 
 variables are of two types: `scoped` and `global`. see **file** section for `global` variable files. `scoped` variables are defined with _vars_ keyword.
 
+```
+# variable documentation (should we!?)
+# ----------------------
+vars:
+  a_var:
+    _ref_: variable interpolation
+    _expose_: bool
+    _val_: null
+```
+
 > specs
 
 listed specifications. type `array`. holds all the specificaitons for a given path to test. Following is so far used childrens.
