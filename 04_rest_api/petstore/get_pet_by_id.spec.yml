@@ -36,7 +36,7 @@ vars:
 
 do: |
   # import system libs
-  Use fetch
+  Use http
   Use assert
   Use parse
   use string
@@ -45,7 +45,7 @@ do: |
   Var url string.Fromat("${}/pets/${}" server pet_id)
 
   # call api
-  Var pet_str (fetch.GET url)
+  Var pet_str (http.GET url)
 
   # parse response to json
   Var pet (parse.ParseJson pet_str model_pet)
