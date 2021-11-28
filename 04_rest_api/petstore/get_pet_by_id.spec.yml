@@ -41,9 +41,11 @@ do: |
   Use parse
   use string
 
+  # prepare request
+  Var url string.Fromat("${}/pets/${}" server pet_id)
+
   # call api
-  Var pet_str (fetch.GET (string.Fromat("${}/pets/${}" server pet_id)))
-  # Var pet_str (fetch.GET (string.Fromat("${server}/pets/${pet_id}")))
+  Var pet_str (fetch.GET url)
 
   # parse response to json
   Var pet (parse.ParseJson pet_str model_pet)
