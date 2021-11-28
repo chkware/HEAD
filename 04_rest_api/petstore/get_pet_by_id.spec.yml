@@ -29,10 +29,10 @@ vars:
   
   # models:
   model_pet: {
-        "id": "integer",
-        "name": "required|string",
-        "breed": "required|string|in:cat,dog"
-      }
+    "id": "integer",
+    "name": "required|string",
+    "breed": "required|string|in:cat,dog"
+  }
 
 do: |
   # import system libs
