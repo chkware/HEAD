@@ -48,10 +48,8 @@ do: |
   Var pet_str (http.GET url)
 
   # parse response to json
+  # inharently should call assert.Assert
   Var pet (parse.ParseJson pet_str model_pet)
-
-  # assert with model
-  assert.Assert pet models.pet
 
   # export to caller
   Expose pet
