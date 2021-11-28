@@ -1,6 +1,6 @@
 ---
 version: 0.1
-describe: get_pet_by_id.{spec?} {pet_id}
+describe: get_pet_by_id
 
 specs:
   - it: get_with_number
@@ -25,9 +25,12 @@ specs:
 
 vars:
   pet_id: 
+    _optional_: true
+    _argument_: true
+
   server: ${global.server}
   
-  # models:
+  # model
   model_pet: {
     "id": "integer",
     "name": "required|string",
@@ -35,12 +38,6 @@ vars:
   }
 
 do: |
-  # import system libs
-  Use http
-  Use assert
-  Use parse
-  use string
-
   # prepare request
   Var url string.Fromat("${}/pets/${}" server pet_id)
 
