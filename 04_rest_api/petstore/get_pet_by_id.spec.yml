@@ -1,9 +1,10 @@
 ---
 version: 0.1
-describe: get_pet_by_id.{spec} {pet_id}
+describe: get_pet_by_id.{spec?} {pet_id}
 
 specs:
   - it: get_with_number
+    default: true
     with: 
       pet_id: 1
     expect: pass
@@ -25,15 +26,13 @@ specs:
 vars:
   pet_id: 
   server: ${global.server}
-
-  # think about model more
-  # var type & validation criteria placement conflict
   
   # models:
-  #   pet:
-  #     id: integer
-  #     name: required|string
-  #     breed: required|string|in:cat,dog
+  model_pet: {
+        "id": "integer",
+        "name": "required|string",
+        "breed": "required|string|in:cat,dog"
+      }
 
 do: |
   # import system libs
@@ -45,7 +44,7 @@ do: |
   (Var pet_str (fetch.GET "%{server}/pets/%{pet_id}"))
 
   # parse response to json
-  (Var pet (parse.ParseJson pet_str models.pet))
+  (Var pet (parse.ParseJson pet_str model_pet))
 
   # assert with model
   (assert.Assert pet models.pet)
