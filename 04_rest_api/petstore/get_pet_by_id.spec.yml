@@ -39,9 +39,11 @@ do: |
   Use fetch
   Use assert
   Use parse
+  use string
 
   # call api
-  Var pet_str (fetch.GET "%{server}/pets/%{pet_id}")
+  Var pet_str (fetch.GET (string.Fromat("${}/pets/${}" server pet_id)))
+  # Var pet_str (fetch.GET (string.Fromat("${server}/pets/${pet_id}")))
 
   # parse response to json
   Var pet (parse.ParseJson pet_str model_pet)
