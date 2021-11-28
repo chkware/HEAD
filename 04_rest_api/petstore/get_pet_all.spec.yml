@@ -20,7 +20,7 @@ specs:
       per_page: 100
       page: "invalid str"
 
-  - it: get_with_page_as_string
+  - it: get_with_per_page_as_string
     expect: pass
     with:
       per_page: "invalid str"
