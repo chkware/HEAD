@@ -1,6 +1,6 @@
 ---
 version: 0.1
-describe: get_pet_all
+describe: get_pet_all {per_page?} {page?}
 
 specs:
   - it: get_with_page
@@ -27,33 +27,29 @@ specs:
       page: 100
 
 vars:
-  page:
-    _value_: 0
-    _optional_: true
-    _argument_: true
-
-  per_page: 
-    _value_: ${global.page_size.regular}
-    _optional_: true
-    _argument_: true
-
+  page: 0
+  per_page: ${global.page_size.regular}
   server: ${global.server}
   url: ${global.server}/pets?page=${page}&per_page=${per_page}
   
   # model
+  model_pet: 
+    _reference_: ${specs.get_pet_by_id.model_pet}
   model_pets:
     _reference_: ${global.models.collect}
-    data.*: "required|of_type:${specs.get_pet_by_id.model_pet}"
+    data.*: "required|of_type:model_pet"
 
 do: |
   # make request
-  Var resp (http.GET url)
+  Var response (http.GET url)
+  Var pet_str response.body
 
   # parse json
-  Var pets (parse.Json resp model_pets)
+  Var pets (parse.Json pet_str model_pets)
 
   # expose pets to callee
   Expose pets
+  Expose response
 
 
 

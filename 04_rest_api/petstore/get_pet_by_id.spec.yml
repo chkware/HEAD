@@ -1,6 +1,6 @@
 ---
 version: 0.1
-describe: get_pet_by_id
+describe: get_pet_by_id {pet_id?}
 
 specs:
   - it: get_with_number
@@ -25,9 +25,6 @@ specs:
 
 vars:
   pet_id: 
-    _optional_: true
-    _argument_: true
-
   server: ${global.server}
   
   # model
@@ -42,7 +39,8 @@ do: |
   Var url string.Fromat("${}/pets/${}" server pet_id)
 
   # call api
-  Var pet_str (http.GET url)
+  Var response (http.GET url)
+  Var pet_str response.body
 
   # parse response to json
   # inharently should call assert.Assert
@@ -50,3 +48,4 @@ do: |
 
   # export to caller
   Expose pet
+  Expose response
