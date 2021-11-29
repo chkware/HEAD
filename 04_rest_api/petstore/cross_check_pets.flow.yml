@@ -3,13 +3,37 @@ version: 0.1
 describe: cross_check_pets
 
 vars:
-  param1: int
-  param2: string
+  list_spec: spec.get_pet_all
+  page_size: 
+  page: 
 
 flows:
-  - it: check_pets
-    do:
-      - set content [:fetch specs.get_pet_by_id.get_with_number]
+  - it: check_with_regular_page_size
+    with:
+      page_size: ${global.page_size.regular}
+      page: 0
+    do: |
+      # get pets response
+      Var pets_resp (Invoke specs.get_pet_all page_size page)
+
+      When (Test page LT pets_resp.data.meta.total) (
+
+      )
+
+      LoopEach pets_resp.data (
+        Var pet_resp (Invoke specs.get_pet_by_id loop.item.id)
+        When (Test pet_resp.code EQ 200) (
+          When(Test pet_resp.name EQ loop.item.name) (
+            OK
+          )
+        )
+      )
+    do_python: |
+      from os import environ
+
+      
+        
+
 
 
 
