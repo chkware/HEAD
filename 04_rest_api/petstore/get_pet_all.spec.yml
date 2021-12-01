@@ -11,8 +11,8 @@ specs:
   - it: get_with_page_from_arg
     expect: pass
     with:
-      per_page: 100
-      page: 200
+      per_page: 
+      page: 
 
   - it: get_with_page_as_string
     expect: pass
