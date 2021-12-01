@@ -4,53 +4,21 @@ describe: cross_check_pets
 
 vars:
   list_spec: spec.get_pet_all
-  page_size: 
-  page: 
+  page_size: ${global.page_size.regular}
+  page: 1
 
-flows:
-  - it: check_with_regular_page_size
-    with:
-      page_size: ${global.page_size.regular}
-      page: 0
-    do: |
-      # get pets response
-      Var pets_resp (Invoke specs.get_pet_all page_size page)
+do: |
+  # invoke spec
 
-      When (Test page LT pets_resp.data.meta.total) (
+  var(pets_resp, invoke(specs.get_pet_all.get_with_page_from_arg, {page_size: page_size, page: page}))
+  
+  # get total page
+  
+  var(total_page, pets_resp.data.meta.total)
 
-      )
-
-      LoopEach pets_resp.data (
-        Var pet_resp (Invoke specs.get_pet_by_id loop.item.id)
-        When (Test pet_resp.code EQ 200) (
-          When(Test pet_resp.name EQ loop.item.name) (
-            OK
-          )
-        )
-      )
-    do_python: |
-      from os import environ
-
-      
-        
-
-
-
-
-# ------------------------
-# imparative
-# ------------------------
-# set content = fetch(findPets)
-# set pets = parse_list(content, '#/components/schemas/Pet')
-# loop
-#   set pet = next(pets)
-#   if pet != nil
-#     set id = get_attribute(pet, id)
-#     set name = get_attribute(pet, name)
-#     set content_i = fetch('find pet by id')
-#     set pet = parse(content_i, '#/components/schemas/Pet')
-#     set id_single = get_attribute(pet, id)
-#     if id_single == id
-#       echo('Ok')
-#     else
-#       echo('Fail')
+  # loop and check if pagination works okay
+  
+  for(test(page, test.LT, total_page), (
+    invoke(specs.get_pet_all.get_with_page_from_arg, {page_size: page_size, page: page})
+    incr(page, 1)
+  ))
