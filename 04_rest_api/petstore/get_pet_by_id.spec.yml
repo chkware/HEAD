@@ -36,16 +36,19 @@ vars:
 
 do: |
   # prepare request
-  Var url string.Fromat("${}/pets/${}" server pet_id)
+  
+  var(url, string.format("${}/pets/${}", server, pet_id))
 
   # call api
-  Var response (http.GET url)
-  Var pet_str response.body
+
+  var(response, http.get(url))
+  var(pet_str, response.body)
 
   # parse response to json
-  # inharently should call assert.Assert
-  Var pet (parse.ParseJson pet_str model_pet)
+  # inharently should call assert.assert
+
+  var(pet, parse.parseJson(pet_str, model_pet))
 
   # export to caller
-  Expose pet
-  Expose response
+  expose(pet)
+  expose(response)

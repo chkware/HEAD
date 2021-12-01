@@ -41,15 +41,18 @@ vars:
 
 do: |
   # make request
-  Var response (http.GET url)
-  Var pet_str response.body
+
+  var(response, http.GET(url))
+  var(pet_str, response.body)
 
   # parse json
-  Var pets (parse.Json pet_str model_pets)
+
+  var(pets, parse.json(pet_str, model_pets))
 
   # expose pets to callee
-  Expose pets
-  Expose response
+
+  expose(pets)
+  expose(response)
 
 
 
