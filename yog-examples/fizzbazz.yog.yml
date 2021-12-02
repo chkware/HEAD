@@ -1,0 +1,28 @@
+# hello world in function
+yog:
+  $does:
+    - for:
+        start: 0
+        end: 100
+        step: 1
+        each:
+          - if:
+              condition_and: 
+                - [.current, $(math.modulo), 3]
+                - [.current, $(math.modulo), 5]
+              does:
+                $printf: {format: 'FizzBazz'}
+          - elif:
+              condition_and:
+                - [.current, $(math.modulo), 3]
+              does:
+                $printf: {'format': 'Fizz'}
+          - elif:
+              condition_and:
+                - [.current, $(math.modulo), 5]
+              does:
+                $printf: {'format': 'Fizz'}
+          - else:
+              continue
+          
+
