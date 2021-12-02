@@ -1,28 +1,32 @@
 # hello world in function
 yog:
-  $does:
-    - for:
-        start: 0
-        end: 100
-        step: 1
-        each:
-          - if:
-              condition_and: 
-                - [.current, $(math.modulo), 3]
-                - [.current, $(math.modulo), 5]
-              does:
-                $printf: {format: 'FizzBazz'}
-          - elif:
-              condition_and:
-                - [.current, $(math.modulo), 3]
-              does:
-                $printf: {'format': 'Fizz'}
-          - elif:
-              condition_and:
-                - [.current, $(math.modulo), 5]
-              does:
-                $printf: {'format': 'Fizz'}
-          - else:
-              continue
-          
-
+  $does: [
+    for: {
+      expr: {start: 0, end: 100, step: 1},
+      does: [
+        when: {
+          condition: [$math.modulo: [start, 3], $math.modulo: [start, 5]],
+          does: [
+            $stdio.printf: {format: 'FizzBuzz'}
+          ],
+        },
+        when: {
+          condition: [$math.modulo: [start, 3]],
+          does: [
+            $stdio.printf: {format: 'Fizz'}
+          ],
+        },
+        when: {
+          condition: [$math.modulo: [start, 5]],
+          does: [
+            $stdio.printf: {format: 'Buzz'}
+          ],
+        },
+        else: {
+          does: [
+            $stdio.printf: {format: '%d', params: [start]}
+          ]
+        }
+      ]
+    }
+  ]

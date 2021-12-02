@@ -1,11 +1,13 @@
 # hello world in function
 yog:
-  function:
-    name: greetings
-    params:
-      - name
-    does:
-      $printf: {format: 'Hello %s', params: [name]}
+  function: {
+    name: greetings,
+    params: [name],
+    does: [
+      $stdio.printf: {format: 'Hello %s', params: [name]},
+    ],
+  }
   
-  $does:
-    $geetings: {name: 'hasan'}
+  $does: [
+    $geetings: {name: 'hasan'},
+  ]
