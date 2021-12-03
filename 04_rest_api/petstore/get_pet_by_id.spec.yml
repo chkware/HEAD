@@ -23,39 +23,47 @@ specs:
     with:
       id: 3.5
 
-vars:
-  pet_id: 
-  server: ${global.server}
-  
-  # model
-  model_pet: {
-    "id": "integer",
-    "name": "required|string",
-    "breed": "required|string|in:cat,dog"
-  }
-
 do: [
-  set: {
+  $var: {
+    pet_id: ~,
+    url: ~,
+    response: ~,
+    pet_str: ~,
+    pet: ~,
+
+    server: :global.server,
+    
+    # model
+    model_pet: {
+      "id": "integer",
+      "name": "required|string",
+      "breed": "required|string|in:cat,dog",
+    }
+  },
+
+  $set: {
     # prepare request
-    url: {$string.format: {format: '${}/pets/${}', params: [server, pet_id]}},
+    url: {$string.format: {format: '{%s}/pets/{%d}', params: [:server, :pet_id] }},
   },
-  set: {
+
+  $set: {
     # call api
-    response: {$http.get: {url: url}},
+    response: {$http.get: {url: :url}},
   },
-  set: {
+  
+  $set: {
     # get response 
-    pet_str: response.body,
+    pet_str: :response.body,
   },
 
-  set: {
+  $set: {
     # parse
-    pet: {$parse.parse_json: {data: pet_str, model: model_pet}},
+    pet: {$parse.parse_json: {data: :pet_str, model: :model_pet }},
   },
 
-  expose: {
+  $expose: {
     # expose variables
-    pet: pet,
-    resp: response
+    pet: :pet,
+    resp: :response,
   }
 ]
