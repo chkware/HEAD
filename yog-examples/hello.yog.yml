@@ -1,6 +1,6 @@
 # hello world in function
 yog:
-  function: {
+  $function: {
     name: greetings,
     params: [name],
     does: [
