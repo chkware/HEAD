@@ -27,37 +27,23 @@ specs:
       page: 100
 
 do: [
-  $var: {
-    page: 0,
-    per_page: :global.page_size.regular,
-    server: :global.server,
-    url: '{%server}/pets?page={%page}&per_page={%per_page}',
-    response: ~,
-    pet_str: ~,
-    pets: ~,
-    
-    # model
-    model_pet: { $alias: specs.get_pet_by_id.model_pet },
-    model_pets: {
-      { $alias: global.models.collect },
-      data.*: "required|of_type:model_pet",
-    }
+  # model
+  model_pet: {$alias: [specs.get_pet_by_id.model_pet]},
+  model_pets: {
+    $inject: [global.models.collect],
+    data.*: "required|of_type:model_pet",
   },
 
-  $set: {
-    response: {$http.get: {url: :url}}
-  },
+  page: 0,
+  per_page: :global.page_size.regular,
+  url: {$string.format: [format: '{%s}/pets?page={%d}&per_page={%d}', params: [:global.server, :page, :per_page]]},
 
-  $set: {
-    pet_str: :response.body,
-  },
+  # call api
+  response: {$http.get: [:url]},
 
-  $set: {
-    pets: {$parse.json: {data: :pet_str, model: :model_pets}}
-  },
-
-  $expose: {
-    pets: :pets,
-    response: :response,
-  }
+  # parse
+  pets: {$parse.jsonOf: [data: :response.body, model: :model_pets]},
+  
+  # expose variables
+  $return: [pets: :pets, response: :response],
 ]
