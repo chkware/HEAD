@@ -1,6 +1,6 @@
 ---
 # server config
-server: http://0.0.0.0/api/v1
+server: https://naseef.net/api/v1
 
 # pagination
 page_size:

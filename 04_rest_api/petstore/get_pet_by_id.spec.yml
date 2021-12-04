@@ -6,13 +6,13 @@ specs:
   - it: get_with_number
     default: true
     with: 
-      pet_id: 1
+      pet_id: 1,
     expect: pass
   
   - it: get_with_string
     expect: fail
     with:
-      id: 'invalid string'
+      id: 'Faisal weds U'
   
   - it: get_without_id
     expect: fail
@@ -43,7 +43,7 @@ do: [
 
   $set: {
     # prepare request
-    url: {$string.format: {format: '{%s}/pets/{%d}', params: [:server, :pet_id] }},
+    url: {$string.format: {format: '{%s}/pet/{%d}', params: [:server, :pet_id] }},
   },
 
   $set: {
@@ -58,7 +58,7 @@ do: [
 
   $set: {
     # parse
-    pet: {$parse.parse_json: {data: :pet_str, model: :model_pet }},
+    pet: {$parse.parse_model_from_json: {data: :pet_str, model: :model_pet }},
   },
 
   $expose: {
