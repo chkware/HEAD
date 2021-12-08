@@ -48,3 +48,31 @@ do: [
   # expose variables
   $return: [pet: :pet, response: :response]
 ]
+
+# do:
+#   - operation: set
+#     params:
+#       - response
+#       - petObj
+
+#   - operation: fetch
+#     params: {
+#       method: GET,
+#       url: http://hasan.net/api1,
+#       response*: response,
+#     }
+#     expect:
+#       code: 200
+
+#   - operation: parse
+#     params: {
+#       type: json,
+#       model: models.pet,
+#       data: response,
+#       validate: true,
+#       return*: petObj,
+#     }
+
+#   - operation: expose
+#     params:
+#      - petObj
