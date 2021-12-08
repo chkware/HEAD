@@ -6,13 +6,13 @@ specs:
   - it: get_with_number
     default: true
     with: 
-      pet_id: 1
+      pet_id: 1,
     expect: pass
   
   - it: get_with_string
     expect: fail
     with:
-      id: 'invalid string'
+      id: 'Faisal weds U'
   
   - it: get_without_id
     expect: fail
@@ -23,32 +23,28 @@ specs:
     with:
       id: 3.5
 
-vars:
-  pet_id: 
-  server: ${global.server}
-  
+do: [
   # model
   model_pet: {
     "id": "integer",
     "name": "required|string",
-    "breed": "required|string|in:cat,dog"
-  }
+    "breed": "required|string|in:cat,dog",
+  },
 
-do: |
-  # prepare request
-  
-  var(url, string.format("${}/pets/${}", server, pet_id))
+  pet_id: ~,
+
+  # prepare url
+  url: {$string.format: [format: '{%s}/pet/{%d}', params: [:global.server, :pet_id]]},
 
   # call api
+  response: {$http.get: [url: :url]},
 
-  var(response, http.get(url))
-  var(pet_str, response.body)
+  # get response 
+  pet_str: :response.body,
 
-  # parse response to json
-  # inharently should call assert.assert
+  # parse
+  pet: {$parse.jsonOf: [data: :pet_str, model: :model_pet]},
 
-  var(pet, parse.parseJson(pet_str, model_pet))
-
-  # export to caller
-  expose(pet)
-  expose(response)
+  # expose variables
+  $return: [pet: :pet, response: :response]
+]

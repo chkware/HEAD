@@ -2,23 +2,20 @@
 version: 0.1
 describe: cross_check_pets
 
-vars:
-  list_spec: spec.get_pet_all
-  page_size: ${global.page_size.regular}
-  page: 1
+do: [
+  page_size: :global.page_size.regular,
+  page: 1,
 
-do: |
-  # invoke spec
+  pets_resp: {$invoke: [spec: specs.get_pet_all.get_with_page_from_arg, args: [per_page: :page_size, page: :page]]},
 
-  var(pets_resp, invoke(specs.get_pet_all.get_with_page_from_arg, {page_size: page_size, page: page}))
-  
-  # get total page
-  
-  var(total_page, pets_resp.data.meta.total)
+  total_page: :pets_resp.data.meta.total,
 
-  # loop and check if pagination works okay
-  
-  for(test(page, test.LT, total_page), (
-    invoke(specs.get_pet_all.get_with_page_from_arg, {page_size: page_size, page: page})
-    incr(page, 1)
-  ))
+  $for: [
+    test: {$compare.lte: [:page, :total_page]},
+    do: [
+      $invoke: [spec: specs.get_pet_all.get_with_page_from_arg, args: [page_size: :page_size, page: :page]],
+
+      $incr: [page, 1],
+    ],
+  ]
+]

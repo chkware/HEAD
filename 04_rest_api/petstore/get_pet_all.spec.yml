@@ -26,34 +26,24 @@ specs:
       per_page: "invalid str"
       page: 100
 
-vars:
-  page: 0
-  per_page: ${global.page_size.regular}
-  server: ${global.server}
-  url: ${global.server}/pets?page=${page}&per_page=${per_page}
-  
+do: [
   # model
-  model_pet: 
-    _reference_: ${specs.get_pet_by_id.model_pet}
-  model_pets:
-    _reference_: ${global.models.collect}
-    data.*: "required|of_type:model_pet"
+  model_pet: {$alias: [specs.get_pet_by_id.model_pet]},
+  model_pets: {
+    $inject: [global.models.collect],
+    data.*: "required|of_type:model_pet",
+  },
 
-do: |
-  # make request
+  page: 0,
+  per_page: :global.page_size.regular,
+  url: {$string.format: [format: '{%s}/pets?page={%d}&per_page={%d}', params: [:global.server, :page, :per_page]]},
 
-  var(response, http.GET(url))
-  var(pet_str, response.body)
+  # call api
+  response: {$http.get: [:url]},
 
-  # parse json
-
-  var(pets, parse.json(pet_str, model_pets))
-
-  # expose pets to callee
-
-  expose(pets)
-  expose(response)
-
-
-
-
+  # parse
+  pets: {$parse.jsonOf: [data: :response.body, model: :model_pets]},
+  
+  # expose variables
+  $return: [pets: :pets, response: :response],
+]

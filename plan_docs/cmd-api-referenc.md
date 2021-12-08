@@ -38,7 +38,22 @@ $ chk spec validate [DIR]
 
 ```bash
 # if [FILE] or [DIR] not given, then: run all file of given type
-$ chk spec run [FILE] [DIR]
+$ chk spec run [FILE] [DIR] --all
+
+# chk spec run get_pet_by_id --all
+# chk spec run get_pet_by_id --help
+
+# Specs:
+
+# get_pet_by_id.get_with_number {pet_id?}
+# get_pet_by_id.get_with_string {pet_id?}
+# get_pet_by_id.get_without_id {pet_id?}
+
+# chk spec run get_pet_by_id.get_with_number
+# chk spec run get_pet_by_id.get_with_number 2
+
+# chk spec run get_pet_by_id.get_with_string
+# chk spec run get_pet_by_id.get_with_string 'Naseef loves YYYY'
 
 # example: will run all .spec.yml of given name
 $ chk spec run file1 file2 ..fileN
