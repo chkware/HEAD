@@ -1,78 +1,73 @@
 ---
 version: 0.1
-describe: get_pet_by_id {pet_id?}
+driver: ~
+describe: get_pet_by_id :pet_id
+
+vars:
+  :pet_id: ~
+  :model_pet: {
+    "id": "integer",
+    "name": "required|string",
+    "breed": "required|string|in:cat,dog",
+  }
+  :response: ~
 
 specs:
   - it: get_with_number
     default: true
-    with: 
-      pet_id: 1,
-    expect: pass
+    request:
+      with:
+        :pet_id: 1,
+
+    response:
+      asserts:
+        - type: assertEquals
+          actual: .code
+          expected: 200
+
+        - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
+        - {type: verify, actual: .body, rule: :model_pet}
+
   
   - it: get_with_string
-    expect: fail
-    with:
-      id: 'Faisal weds U'
+    request:
+      with:
+        :pet_id: 'Rafi weds Upoma'
+    response:
+      asserts:
+        - {type: assertNotEquals, actual: .code, expected: 200}
+
   
   - it: get_without_id
-    expect: fail
-    without: [id]
-  
+    request:
+      without: [ :pet_id ]
+    response:
+      asserts:
+        - {type: assertNotEquals, actual: .code, expected: 200}
+    
+
   - it: get_with_float
-    expect: fail
-    with:
-      id: 3.5
+    request:
+      with:
+        :pet_id: 3.5
+    response:
+      asserts:
+        - {type: assertNotEquals, actual: .code, expected: 200}
 
-do: [
-  # model
-  model_pet: {
-    "id": "integer",
-    "name": "required|string",
-    "breed": "required|string|in:cat,dog",
-  },
+request:
+  url: :global.server/pets/:pet_id
+  method: GET
+  headers: ~
+  response*: :response
 
-  pet_id: ~,
+expose:
+  - :response
 
-  # prepare url
-  url: {$string.format: [format: '{%s}/pet/{%d}', params: [:global.server, :pet_id]]},
+# ---
+# # Simple rest client
+# version: 0.1
+# describe: get_pet
 
-  # call api
-  response: {$http.get: [url: :url]},
-
-  # get response 
-  pet_str: :response.body,
-
-  # parse
-  pet: {$parse.jsonOf: [data: :pet_str, model: :model_pet]},
-
-  # expose variables
-  $return: [pet: :pet, response: :response]
-]
-
-# do:
-#   - operation: set
-#     params:
-#       - response
-#       - petObj
-
-#   - operation: fetch
-#     params: {
-#       method: GET,
-#       url: http://hasan.net/api1,
-#       response*: response,
-#     }
-#     expect:
-#       code: 200
-
-#   - operation: parse
-#     params: {
-#       type: json,
-#       model: models.pet,
-#       data: response,
-#       validate: true,
-#       return*: petObj,
-#     }
-
-#   - operation: expose
-#     params:
-#      - petObj
+# request:
+#   url: https://naseef.net/api/v1/pets/1
+#   method: GET
