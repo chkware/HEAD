@@ -13,9 +13,9 @@ definitions:
 # @todo cache rebuild needed --no-cache
 #
 #=============================================================
-# filePath: . # means default config, which is current dir
-# filePath: ./some-folder # relative path
-# filePath: /User/mahmudul.hasan/testbase # absolute path
+# file_path: . # means default config, which is current dir
+# file_path: ./some-folder # relative path
+# file_path: /User/mahmudul.hasan/testbase # absolute path
 #=============================================================
 file_path: .
 
