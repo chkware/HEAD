@@ -62,12 +62,3 @@ request:
 
 expose:
   - :response
-
-# ---
-# # Simple rest client
-# version: 0.1
-# describe: get_pet
-
-# request:
-#   url: https://naseef.net/api/v1/pets/1
-#   method: GET
