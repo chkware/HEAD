@@ -1,25 +1,52 @@
 ---
-# Simple rest client
-version: 0.1
-describe: get_pet
-
-request:
-  url: https://naseef.net/api/v1/pets/1
-  method: GET
-
-...
----
 version: 0.1
 driver: ~
-describe: get_pet_by_id :pet_id
+describe: get_pet :pet_id
 
 vars:
   :pet_id: ~
+  :model_pet: {
+    "id": "integer",
+    "name": "required|string",
+    "breed": "required|string|in:cat,dog",
+  }
   :response: ~
+
+specs:
+  - it: get_with_number
+    default: true
+    request_with:
+        :pet_id: 1,
+    asserts:
+      - type: assertEquals
+        actual: .code
+        expected: 200
+
+      - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
+      - {type: assertJsonStruct, actual: .body, rule: :model_pet}
+
+  
+  - it: get_with_string
+    request_with:
+        :pet_id: 'Rafi weds Upoma'
+    asserts:
+      - {type: assertNotEquals, actual: .code, expected: 200}
+
+  
+  - it: get_without_id
+    request_without: [ :pet_id ]
+    asserts:
+      - {type: assertNotEquals, actual: .code, expected: 200}
+    
+
+  - it: get_with_float
+    request_with:
+        :pet_id: 3.5
+    asserts:
+      - {type: assertNotEquals, actual: .code, expected: 200}
 
 request:
   url: :global.server/pets/:pet_id
   method: GET
-  expose:
-    - .response: :response
-...
+  headers: ~
+  .response: :response

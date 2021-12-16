@@ -1,6 +1,6 @@
 ---
 version: 0.1
-describe: "get_pet_all {:page} {:per_page}"
+describe: "get_pets {:page} {:per_page}"
 
 vars:
   :page: 1
