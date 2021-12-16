@@ -15,50 +15,39 @@ vars:
 specs:
   - it: get_with_number
     default: true
-    request:
-      with:
+    request_with:
         :pet_id: 1,
+    asserts:
+      - type: assertEquals
+        actual: .code
+        expected: 200
 
-    response:
-      asserts:
-        - type: assertEquals
-          actual: .code
-          expected: 200
-
-        - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
-        - {type: verify, actual: .body, rule: :model_pet}
+      - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
+      - {type: verify, actual: .body, rule: :model_pet}
 
   
   - it: get_with_string
-    request:
-      with:
+    request_with:
         :pet_id: 'Rafi weds Upoma'
-    response:
-      asserts:
-        - {type: assertNotEquals, actual: .code, expected: 200}
+    asserts:
+      - {type: assertNotEquals, actual: .code, expected: 200}
 
   
   - it: get_without_id
-    request:
-      without: [ :pet_id ]
-    response:
-      asserts:
-        - {type: assertNotEquals, actual: .code, expected: 200}
+    request_without: [ :pet_id ]
+    asserts:
+      - {type: assertNotEquals, actual: .code, expected: 200}
     
 
   - it: get_with_float
-    request:
-      with:
+    request_with:
         :pet_id: 3.5
-    response:
-      asserts:
-        - {type: assertNotEquals, actual: .code, expected: 200}
+    asserts:
+      - {type: assertNotEquals, actual: .code, expected: 200}
 
 request:
   url: :global.server/pets/:pet_id
   method: GET
   headers: ~
-  response*: :response
-
-expose:
-  - :response
+  expose:
+    - .response: :response
