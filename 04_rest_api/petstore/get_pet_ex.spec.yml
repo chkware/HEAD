@@ -1,7 +1,7 @@
 ---
 # Simple rest client
 version: 0.1
-describe: get_pet
+describe: get_pet_ex
 
 request:
   url: https://naseef.net/api/v1/pets/1
@@ -11,7 +11,7 @@ request:
 ---
 version: 0.1
 driver: ~
-describe: get_pet_by_id :pet_id
+describe: get_pet_ex :pet_id
 
 vars:
   :pet_id: ~
