@@ -46,6 +46,5 @@ request:
       per_page: :per_page
   method: GET
   headers: ~
-  response*: :response
-  expose*:
-    - :response
+  expose:
+    - .response: :response
