@@ -2,20 +2,20 @@
 version: 0.1
 describe: cross_check_pets
 
-do: [
-  page_size: :global.page_size.regular,
-  page: 1,
+vars:
+  :page: 1
+  :count: 1
+  :last: 1
 
-  pets_resp: {$invoke: [spec: specs.get_pet_all.get_with_page_from_arg, args: [per_page: :page_size, page: :page]]},
-
-  total_page: :pets_resp.data.meta.total,
-
-  $for: [
-    test: {$compare.lte: [:page, :total_page]},
-    do: [
-      $invoke: [spec: specs.get_pet_all.get_with_page_from_arg, args: [page_size: :page_size, page: :page]],
-
-      $incr: [page, 1],
-    ],
-  ]
-]
+flow:
+  - run: specs.get_pet_all.get_with_page_from_arg :page :global.page_size.regular
+    vars:
+      :count: .response.meta.count
+      :last: .response.meta.last
+  - break: true
+    when: :count _lt_ :global.page_size.regular
+  - exec: :page _add_ 1
+    vars:
+      :page: .add
+  - continue: true
+    when: :page _lte_ :last
