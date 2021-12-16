@@ -23,7 +23,7 @@ specs:
         expected: 200
 
       - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
-      - {type: verify, actual: .body, rule: :model_pet}
+      - {type: assertJsonStruct, actual: .body, rule: :model_pet}
 
   
   - it: get_with_string

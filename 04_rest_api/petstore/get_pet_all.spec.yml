@@ -1,49 +1,51 @@
 ---
 version: 0.1
-describe: get_pet_all {per_page?} {page?}
+describe: "get_pet_all {:page} {:per_page}"
+
+vars:
+  :page: 1
+  :per_page: :global.page_size.regular
+  :pets:
+    - *:global.models.paged_result
+    - "data": "nullable|array|max:{:per_page}"
+    - "data.*": required|of_struct:*:specs.get_pet_by_id.model_pet
 
 specs:
   - it: get_with_page
     default: true
-    expect: pass
-    with: ~
+    request_without:
+      - url.query_vars
+    asserts:
+      - {type: assertEquals, actual: .code, expected: 200}
+      - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
+      - {type: assertJsonStruct, actual: .body, rule: :global.models.collect}
 
   - it: get_with_page_from_arg
-    expect: pass
-    with:
-      per_page: 
-      page: 
+    request_with:
+      query_vars:
+        page: :page
+        per_page: :per_page
+    asserts:
+      - {type: assertEquals, actual: .code, expected: 200}
+      - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
+      - {type: assertJsonStruct, actual: .body, rule: :global.models.collect}
 
   - it: get_with_page_as_string
-    expect: pass
-    with:
-      per_page: 100
-      page: "invalid str"
+    request_with:
+      query_vars:
+        page: "invalid str"
+        per_page: 100
+    asserts:
+      - {type: assertEquals, actual: .code, expected: 200}
 
-  - it: get_with_per_page_as_string
-    expect: pass
-    with:
-      per_page: "invalid str"
-      page: 100
-
-do: [
-  # model
-  model_pet: {$alias: [specs.get_pet_by_id.model_pet]},
-  model_pets: {
-    $inject: [global.models.collect],
-    data.*: "required|of_type:model_pet",
-  },
-
-  page: 0,
-  per_page: :global.page_size.regular,
-  url: {$string.format: [format: '{%s}/pets?page={%d}&per_page={%d}', params: [:global.server, :page, :per_page]]},
-
-  # call api
-  response: {$http.get: [:url]},
-
-  # parse
-  pets: {$parse.jsonOf: [data: :response.body, model: :model_pets]},
-  
-  # expose variables
-  $return: [pets: :pets, response: :response],
-]
+request:
+  url:
+    path: :global.server/pets
+    query_vars:
+      page: :page
+      per_page: :per_page
+  method: GET
+  headers: ~
+  response*: :response
+  expose*:
+    - :response
