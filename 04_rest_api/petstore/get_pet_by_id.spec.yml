@@ -49,5 +49,4 @@ request:
   url: :global.server/pets/:pet_id
   method: GET
   headers: ~
-  expose:
-    - .response: :response
+  .response: :response

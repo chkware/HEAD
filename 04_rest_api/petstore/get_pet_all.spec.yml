@@ -18,7 +18,7 @@ specs:
     asserts:
       - {type: assertEquals, actual: .code, expected: 200}
       - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
-      - {type: assertJsonStruct, actual: .body, rule: :global.models.collect}
+      - {type: assertJsonStruct, actual: .body, rule: :pets}
 
   - it: get_with_page_from_arg
     request_with:
@@ -28,7 +28,7 @@ specs:
     asserts:
       - {type: assertEquals, actual: .code, expected: 200}
       - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
-      - {type: assertJsonStruct, actual: .body, rule: :global.models.collect}
+      - {type: assertJsonStruct, actual: .body, rule: :pets}
 
   - it: get_with_page_as_string
     request_with:
@@ -46,5 +46,4 @@ request:
       per_page: :per_page
   method: GET
   headers: ~
-  expose:
-    - .response: :response
+  .response: :response
