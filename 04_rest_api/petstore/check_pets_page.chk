@@ -1,5 +1,6 @@
 ---
 version: 0.1
+kind: flow
 describe: cross_check_pets
 
 vars:

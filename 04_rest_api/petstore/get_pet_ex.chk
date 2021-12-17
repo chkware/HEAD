@@ -1,6 +1,7 @@
 ---
 # Simple rest client
 version: 0.1
+kind: spec
 describe: get_pet_ex
 
 request:
@@ -11,6 +12,7 @@ request:
 ---
 version: 0.1
 driver: ~
+kind: spec
 describe: get_pet_ex :pet_id
 
 vars:

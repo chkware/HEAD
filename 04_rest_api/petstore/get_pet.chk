@@ -1,6 +1,7 @@
 ---
 version: 0.1
 driver: ~
+kind: spec
 describe: get_pet :pet_id
 
 vars:
