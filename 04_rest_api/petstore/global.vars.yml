@@ -7,10 +7,12 @@ page_size:
   regular: 15
 
 models:
-  collect: {
+  paged_result: {
     "meta": "required|object",
     "meta.total": "required|integer",
     "meta.count": "required|integer",
+    "meta.first": "required|integer",
+    "meta.last": "required|integer",
     "links": "required|object",
     "links.first": "required|url",
     "links.last": "required|url",

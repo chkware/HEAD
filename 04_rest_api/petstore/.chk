@@ -13,19 +13,19 @@ definitions:
 # @todo cache rebuild needed --no-cache
 #
 #=============================================================
-# filePath: . # means default config, which is current dir
-# filePath: ./some-folder # relative path
-# filePath: /User/mahmudul.hasan/testbase # absolute path
+# file_path: . # means default config, which is current dir
+# file_path: ./some-folder # relative path
+# file_path: /User/mahmudul.hasan/testbase # absolute path
 #=============================================================
 file_path: .
 
 #=============================================================
-# drivers to use to make api request
+# drivers
+# Driver is a runner plugin that runs `.spec.yml` and `.flow.yml`
+# files with `chk run ...` gets called in console
 #=============================================================
 drivers:
-  - name: cURL
+  - name: RestSpecRunner
     default: true
-    payload: app_request # alternative to context.driver_payload in .spec.yml files
-
-  - name: native
-    kind: ~
+    # alternative to context.driver_payload in .spec.yml files
+    payload: ~
