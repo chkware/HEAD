@@ -21,16 +21,16 @@ $ chk init --with-out=flow,spec
 # if [FILE] or [DIR] not given, then: validate all file of given type
 
 # example: will validate all .flow.yml of given name
-$ chk validate [FILE]
-$ chk validate file1 file2 ..fileN
+$ chk flow validate [FILE]
+$ chk flow validate file1 file2 ..fileN
 
-$ chk validate [DIR]
+$ chk flow validate [DIR]
 
 # example: will validate all .spec.yml of given name
-$ chk validate [FILE]
-$ chk validate file1 file2 ..fileN
+$ chk spec validate [FILE]
+$ chk spec validate file1 file2 ..fileN
 
-$ chk validate [DIR]
+$ chk spec validate [DIR]
 
 ```
 
@@ -38,29 +38,24 @@ $ chk validate [DIR]
 
 ```bash
 # if [FILE] or [DIR] not given, then: run all file of given type
-# running with --all flag should run all the specs in a file
-# running without it sould only run default spec
-$ chk run [FILE] [DIR] --all
-# Eg:
+$ chk spec run [FILE] [DIR] --all
+
 # chk run get_pet_by_id --all
-
-
-# when run with help command
-# chk run get_pet_by_id --help
+# chk spec run get_pet_by_id --help
 
 # Specs:
+
 # get_pet_by_id.get_with_number {pet_id?}
 # get_pet_by_id.get_with_string {pet_id?}
 # get_pet_by_id.get_without_id {pet_id?}
 
+# chk spec run get_pet_by_id.get_with_number
+# chk spec run get_pet_by_id.get_with_number 2
 
-# Sample commands
-# chk run get_pet_by_id.get_with_number
-# chk run get_pet_by_id.get_with_number 2
-
-# chk run get_pet_by_id.get_with_string
-# chk run get_pet_by_id.get_with_string 'Naseef loves YYYY'
+# chk spec run get_pet_by_id.get_with_string
+# chk spec run get_pet_by_id.get_with_string 'Naseef loves YYYY'
 
 # example: will run all .spec.yml of given name
-$ chk run file1 file2 ..fileN
+$ chk spec run file1 file2 ..fileN
+
 ```
