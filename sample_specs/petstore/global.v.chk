@@ -1,12 +1,12 @@
 ---
 # server config
-server: https://naseef.net/api/v1
+$server: https://naseef.net/api/v1
 
 # pagination
-page_size:
+$page_size:
   regular: 15
 
-models:
+$models:
   paged_result: {
     "meta": "required|object",
     "meta.total": "required|integer",

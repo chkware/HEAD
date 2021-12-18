@@ -1,0 +1,23 @@
+---
+# Simple rest client
+version: 0.1
+
+request:
+  url: https://naseef.net/api/v1/pets/1
+  method: GET
+
+...
+---
+version: 0.1
+describe: "get_pet_ex {$pet_id}"
+
+vars:
+  $pet_id: ~
+  $response: ~
+
+request:
+  path: "{$global.server}/pets/{$pet_id}"
+  method: GET
+  expose:
+    - .response: $response
+...

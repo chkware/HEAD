@@ -10,22 +10,7 @@ Introduced convensions
 Why
 - lowest common denominator(?!) among all oses, including legecy one
 - easy to read, noob friendly, not same for camelCase
-- on doubleclick selects whole word, not same of pascel-case
-
-
-**variables**
-
-> version
-
-version of the document, to be used by file parsers.
-
-> describe
-
-to describle or give a title at top level. should be same name as file name
-
-> context [TBD]
-
-request context information for current spec. format `<definition>.<tags_under_context_meta>`. fx: `self.request`
+- on doubleclick selects whole word, not same of pascal-case
 
 > vars
 
