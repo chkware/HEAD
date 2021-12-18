@@ -1,15 +1,14 @@
 ---
 version: 0.1
-kind: spec
-describe: "get_pets {:page} {:per_page}"
+describe: "get_pets {$page} {$per_page}"
 
 vars:
-  :page: 1
-  :per_page: :global.page_size.regular
-  :pets:
-    - *:global.models.paged_result
-    - "data": "nullable|array|max:{:per_page}"
-    - "data.*": required|of_struct:*:specs.get_pet_by_id.model_pet
+  $page: 1
+  $per_page: $global.page_size.regular
+  $pets:
+    - {*$global.models.paged_result}
+    - "data": "nullable|array|max:{$per_page}"
+    - "data.*": required|of_struct:{$specs.get_pet_by_id.model_pet}
 
 specs:
   - it: get_with_page
@@ -17,19 +16,19 @@ specs:
     request_without:
       - url.query_vars
     asserts:
-      - {type: assertEquals, actual: .code, expected: 200}
-      - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
-      - {type: assertJsonStruct, actual: .body, rule: :pets}
+      - {type: AssertEquals, actual: .code, expected: 200}
+      - {type: AssertEquals, actual: .headers.Content-Type, expected: application/json}
+      - {type: AssertJsonStruct, actual: .body, rule: $pets}
 
   - it: get_with_page_from_arg
     request_with:
       query_vars:
-        page: :page
-        per_page: :per_page
+        page: $page
+        per_page: $per_page
     asserts:
-      - {type: assertEquals, actual: .code, expected: 200}
-      - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
-      - {type: assertJsonStruct, actual: .body, rule: :pets}
+      - {type: AssertEquals, actual: .code, expected: 200}
+      - {type: AssertEquals, actual: .headers.Content-Type, expected: application/json}
+      - {type: AssertJsonStruct, actual: .body, rule: $pets}
 
   - it: get_with_page_as_string
     request_with:
@@ -37,14 +36,13 @@ specs:
         page: "invalid str"
         per_page: 100
     asserts:
-      - {type: assertEquals, actual: .code, expected: 200}
+      - {type: AssertEquals, actual: .code, expected: 200}
 
 request:
-  url:
-    path: :global.server/pets
-    query_vars:
-      page: :page
-      per_page: :per_page
+  path: $global.server/pets
+  queries:
+    page: $page
+    per_page: $per_page
   method: GET
   headers: ~
-  .response: :response
+  .response: $response
