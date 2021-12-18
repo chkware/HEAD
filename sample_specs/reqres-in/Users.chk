@@ -1,0 +1,9 @@
+version: Rest-Runner/Basic:Spec:0.6
+
+request:
+  method: GET
+  path: "{$env.server}/users?page=1"
+
+spec:
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 200}

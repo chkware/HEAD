@@ -1,0 +1,5 @@
+version: Rest-Runner/Basic:Spec:0.6
+
+request:
+  path: "{$env.server}/user/1"
+  method: GET

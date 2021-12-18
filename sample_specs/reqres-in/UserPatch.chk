@@ -1,0 +1,12 @@
+version: Rest-Runner/Basic:Spec:0.6
+
+request:
+  path: "{$env.server}/users/2"
+  method: PATCH
+  body: {
+    "job": "zion resident"
+  }
+
+spec:
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 200}
