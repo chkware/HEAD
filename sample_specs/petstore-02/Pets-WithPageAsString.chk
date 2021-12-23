@@ -1,0 +1,14 @@
+---
+version: Rest-Runner/Basic:Spec:0.6
+
+request:
+  path: "{$env.server}/pets"
+  query:
+    page: "Some invalid string"
+    per_page: $global.page_size.regular
+  method: GET
+  headers: ~
+
+spec:
+  asserts:
+    - {type: assertEquals, actual: .code, expected: 400}

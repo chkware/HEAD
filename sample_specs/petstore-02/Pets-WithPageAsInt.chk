@@ -1,0 +1,21 @@
+---
+version: Rest-Runner/Basic:Spec:0.6
+describe: "Pets-WithPageAsInt {$page?} {$perPage?}"
+
+vars:
+  page: 1
+  perPage: $global.page_size.regular
+
+request:
+  path: "{$env.server}/pets"
+  query:
+    page: $page
+    per_page: $perPage
+  method: GET
+  headers: ~
+
+spec:
+  asserts:
+    - {type: assertEquals, actual: .code, expected: 200}
+    - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
+    - {type: assertJsonStruct, actual: .body, rule: $Specs.Pets-Default.pets}
