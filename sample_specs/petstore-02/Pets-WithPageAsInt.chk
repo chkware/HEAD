@@ -5,6 +5,7 @@ describe: "Pets-WithPageAsInt {$page?} {$perPage?}"
 vars:
   page: 1
   perPage: $global.page_size.regular
+  response: ~
 
 request:
   path: "{$env.server}/pets"
@@ -13,6 +14,7 @@ request:
     per_page: $perPage
   method: GET
   headers: ~
+  response*: $response
 
 spec:
   asserts:

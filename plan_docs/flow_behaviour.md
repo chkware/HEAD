@@ -21,10 +21,23 @@ behaviour of a flow
 ### Ingredients of flow
 
 ```
-- {run: '', vars: '', when: '', assert: ''}
-- {exec: '', vars: '', when: '', assert: ''}
+- run: ''
+  vars: ''
+  when: ''
+  assert: ''
+
+- exec: ''
+  vars: ''
+  when: ''
+  assert: ''
+
 - {break: '', vars: '', when: ''}
 - {continue: '', vars: '', when: ''}
+
+- {when: '', or_when: '', and_when: '', exec: '', with: []}
+- {when: '', or_when: '', and_when: '', run: '', with: []}
+- {when: '', or_when: '', and_when: '', set: '', with: []}
+- {when: '', or_when: '', and_when: '', loop: []}
 ```
 
 
@@ -33,4 +46,5 @@ behaviour of a flow
 _lt_, _lte_, _gt_, _gte_, _eq_, _neq_,  # comparison
 _add_, _sub_, _mul_, _div_, _mod_       # arithmatic
 _and_, _or_, _xor_, _not_               # logical
+_break_, _continue_, _goto_             # flow control
 ```
