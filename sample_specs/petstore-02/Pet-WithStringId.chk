@@ -1,10 +1,10 @@
 version: Rest-Runner/Basic:Spec:0.6
 
 vars:
-  $petId: "Faisal asks Mitu"
+  petId: "Faisal asks Mitu"
 
 request:
-  path: "{$dev.server}/pets/{$petId}"
+  path: "{$env.server}/pets/{$petId}"
   method: GET
 
 spec:

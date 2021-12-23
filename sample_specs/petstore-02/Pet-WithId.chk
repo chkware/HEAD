@@ -2,15 +2,15 @@ version: Rest-Runner/Basic:Spec:0.6
 describe: "Pet {$petId}"
 
 vars:
-  $petId: 1
-  $model_pet: {
+  petId: 1
+  pet: {
     "id": "integer",
     "name": "required|string",
     "breed": "required|string|in:cat,dog",
   }
 
 request:
-  path: "{$dev.server}/pets/{$petId}"
+  path: "{$env.server}/pets/{$petId}"
   method: GET
 
 spec:
@@ -19,4 +19,4 @@ spec:
   asserts:
     - {type: assertEquals, actual: .code, expected: 200}
     - {type: assertEquals, actual: .headers.Content-Type, expected: "application/json"}
-    - {type: assertJsonStruct, actual: .body, rule: $model_pet}
+    - {type: assertJsonStruct, actual: .body, rule: $pet}
