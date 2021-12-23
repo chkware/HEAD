@@ -1,4 +1,4 @@
-version: Rest-Runner/Basic:Spec:0.6
+version: Rest-Runner/Basic:Flow:0.6
 
 flow:
   - run: $Specs.Pet-WithId
