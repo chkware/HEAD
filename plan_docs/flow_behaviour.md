@@ -31,11 +31,8 @@ behaviour of a flow
   when: ''
   assert: ''
 
-- {break: '', vars: '', when: ''}
-- {continue: '', vars: '', when: ''}
-
-- {when: '', exec: '', with: []}
-- {when: '', run: '', with: []}
+- {when: '', exec: '', with: [], asserts: ''}
+- {when: '', run: '', with: [], asserts: ''}
 - {when: '', set: '', with: []}
 - {when: '', loop: []}
 ```

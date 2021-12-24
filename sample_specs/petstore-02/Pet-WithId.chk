@@ -8,10 +8,12 @@ vars:
     "name": "required|string",
     "breed": "required|string|in:cat,dog",
   }
+  response: ~
 
 request:
   path: "{$env.server}/pets/{$petId}"
   method: GET
+  response*: response
 
 spec:
   request_with:
