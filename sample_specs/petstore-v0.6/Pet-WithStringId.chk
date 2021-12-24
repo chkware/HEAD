@@ -1,0 +1,12 @@
+version: Rest-Runner/Basic:Spec:0.6
+
+vars:
+  petId: "Faisal asks Mitu"
+
+request:
+  path: "{$env.server}/pets/{$petId}"
+  method: GET
+
+spec:
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 404}

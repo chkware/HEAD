@@ -1,0 +1,36 @@
+---
+version: Rest-Runner/Basic:Flow:0.6
+
+vars:
+  page: 1
+  perPage: $global.page_size.regular
+  count: 0
+  last: 1
+
+flow:
+  - when: ($count _eq_ 0) _or_ (($count _eq_ $perPage) _and_ ($page _lt_ $last))
+    loop:
+      - run: Specs.Pets-WithPageAsInt
+        with: [$page, $perPage]
+      
+      - set: $count
+        with: $Specs.Pets-WithPageAsInt.response.meta.count
+      
+      - set: $last
+        with: $Specs.Pets-WithPageAsInt.response.meta.last
+        when: $last _neq_ $Specs.Pets-WithPageAsInt.response.meta.last
+
+      - exec: _break_
+        when: $count _lt_ $perPage
+
+      - set: $page
+        with: $page _add_ 1
+
+  # - when: ($count _eq_ 0) _or_ (($count _eq_ $perPage) _and_ ($page _lt_ $last))
+  #   loop: [
+  #     {run: Specs.Pets-WithPageAsInt, with: [$page, $perPage]},
+  #     {set: $count, with: $Specs.Pets-WithPageAsInt.response.meta.count},
+  #     {set: $last, with: $Specs.Pets-WithPageAsInt.response.meta.last},
+  #     {exec: _break_, when: $count _lt_ $perPage},
+  #     {set: $page, with: $page _add_ 1},    
+  #   ]

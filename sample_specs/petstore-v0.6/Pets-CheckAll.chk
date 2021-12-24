@@ -1,0 +1,7 @@
+version: Rest-Runner/Basic:Flow:0.6
+
+flow:
+  - run: $Specs.Pets-Default
+  - run: $Specs.Pets-WithPageAsInt
+  - run: $Specs.Pets-WithPageAsFloat
+  - run: $Specs.Pets-WithPageAsString

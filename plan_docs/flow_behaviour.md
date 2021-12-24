@@ -21,16 +21,28 @@ behaviour of a flow
 ### Ingredients of flow
 
 ```
-- {run: '', vars: '', when: '', assert: ''}
-- {exec: '', vars: '', when: '', assert: ''}
-- {break: '', vars: '', when: ''}
-- {continue: '', vars: '', when: ''}
+- run: ''
+  vars: ''
+  when: ''
+  assert: ''
+
+- exec: ''
+  vars: ''
+  when: ''
+  assert: ''
+
+- {when: '', exec: '', with: [], asserts: ''}
+- {when: '', run: '', with: [], asserts: ''}
+- {when: '', set: '', with: []}
+- {when: '', loop: []}
 ```
 
 
 ### operator used in `when` and `exec`
 ```
+()                                      # scoping
 _lt_, _lte_, _gt_, _gte_, _eq_, _neq_,  # comparison
 _add_, _sub_, _mul_, _div_, _mod_       # arithmatic
 _and_, _or_, _xor_, _not_               # logical
+_break_, _continue_, _goto_             # flow control
 ```

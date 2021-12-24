@@ -1,0 +1,7 @@
+version: Rest-Runner/Basic:Flow:0.6
+
+flow:
+  - run: $Specs.Pet-WithId
+  - run: $Specs.Pet-WithFloatId
+  - run: $Specs.Pet-WithStringId
+  - run: $Specs.Pet-WithoutId

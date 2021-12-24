@@ -1,0 +1,19 @@
+---
+# pagination
+page_size:
+  regular: 15
+
+models:
+  paged_result: {
+    "meta": "required|object",
+    "meta.total": "required|integer",
+    "meta.count": "required|integer",
+    "meta.first": "required|integer",
+    "meta.last": "required|integer",
+    "links": "required|object",
+    "links.first": "required|url",
+    "links.last": "required|url",
+    "links.prev": "required|either_or:url,null",
+    "links.next": "required|either_or:url,null",
+    "data": "nullable|array"
+  }

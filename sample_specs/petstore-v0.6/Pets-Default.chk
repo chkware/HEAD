@@ -1,0 +1,20 @@
+---
+version: Rest-Runner/Basic:Spec:0.6
+
+vars:
+  pets: {
+    {*$global.models.paged_result},
+    data: 'nullable|array|max:{$global.page_size.regular}',
+    data.*: 'required|of_struct:{$Specs.Pet-WithId.pet}',
+  }
+
+request:
+  path: "{$env.server}/pets"
+  method: GET
+  headers: ~
+
+spec:
+  asserts:
+    - {type: assertEquals, actual: .code, expected: 200}
+    - {type: assertEquals, actual: .headers.Content-Type, expected: application/json}
+    - {type: assertJsonStruct, actual: .body, rule: $pets}
