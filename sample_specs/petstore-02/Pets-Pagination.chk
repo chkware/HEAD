@@ -5,40 +5,32 @@ vars:
   page: 1
   perPage: $global.page_size.regular
   count: 0
+  last: 1
 
 flow:
-  - when: $count _eq_ 0
-    or_when: $count _eq_ $perPage
+  - when: ($count _eq_ 0) _or_ (($count _eq_ $perPage) _and_ ($page _lt_ $last))
     loop:
-      - {run: Specs.Pets-WithPageAsInt, with: [$page, $perPage]}
-      - {set: $count, with: $Specs.Pets-WithPageAsInt.response.meta.count}
+      - run: Specs.Pets-WithPageAsInt
+        with: [$page, $perPage]
+      
+      - set: $count
+        with: $Specs.Pets-WithPageAsInt.response.meta.count
+      
+      - set: $last
+        with: $Specs.Pets-WithPageAsInt.response.meta.last
+        when: $last _neq_ $Specs.Pets-WithPageAsInt.response.meta.last
 
       - exec: _break_
         when: $count _lt_ $perPage
-        and_when: $count _gt_ $perPage
 
       - set: $page
         with: $page _add_ 1
-      
 
-
-
-
-
-
-
-
-  # - &start
-  #   
-  #   with: [$page, $perPage]
-
-
-  # - when: $count _lt_ $perPage
-  #   goto: &start
-
-
-# statement
-# - assignment
-# - execution
-# branching
-# iteration
+  # - when: ($count _eq_ 0) _or_ (($count _eq_ $perPage) _and_ ($page _lt_ $last))
+  #   loop: [
+  #     {run: Specs.Pets-WithPageAsInt, with: [$page, $perPage]},
+  #     {set: $count, with: $Specs.Pets-WithPageAsInt.response.meta.count},
+  #     {set: $last, with: $Specs.Pets-WithPageAsInt.response.meta.last},
+  #     {exec: _break_, when: $count _lt_ $perPage},
+  #     {set: $page, with: $page _add_ 1},    
+  #   ]

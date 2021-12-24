@@ -34,15 +34,16 @@ behaviour of a flow
 - {break: '', vars: '', when: ''}
 - {continue: '', vars: '', when: ''}
 
-- {when: '', or_when: '', and_when: '', exec: '', with: []}
-- {when: '', or_when: '', and_when: '', run: '', with: []}
-- {when: '', or_when: '', and_when: '', set: '', with: []}
-- {when: '', or_when: '', and_when: '', loop: []}
+- {when: '', exec: '', with: []}
+- {when: '', run: '', with: []}
+- {when: '', set: '', with: []}
+- {when: '', loop: []}
 ```
 
 
 ### operator used in `when` and `exec`
 ```
+()                                      # scoping
 _lt_, _lte_, _gt_, _gte_, _eq_, _neq_,  # comparison
 _add_, _sub_, _mul_, _div_, _mod_       # arithmatic
 _and_, _or_, _xor_, _not_               # logical
