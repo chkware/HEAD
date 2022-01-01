@@ -4,7 +4,9 @@
 - Spec file extension (default: `<file_name>.chk`):
 
 ```bash
-$ chk init
+# init a project in the given directory
+# if DIR not given, current directory is referenced as default
+$ chk setup [DIR]
 ```
 
 ### Validate project files
