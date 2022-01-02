@@ -1,5 +1,5 @@
 version: Rest-Runner/Basic:Http:0.6
-describe: UserCreateRequest {$createBody?}
+describe: Request {$createBody?}
 
 using: 
   - Env

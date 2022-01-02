@@ -1,7 +1,7 @@
 version: Rest-Runner/Basic:Spec:0.6
 
 using:
-  - UserCreateRequest
+  - UserCreate/Request
 
 spec:
   asserts:
