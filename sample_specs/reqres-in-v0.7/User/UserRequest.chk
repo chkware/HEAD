@@ -1,0 +1,12 @@
+version: Rest-Runner/Basic:Http:0.7
+describe: UserRequest {$Id}
+
+using:
+  - Env
+
+vars:
+  Id: 1
+
+request:
+  path: "{$Env.server}/user/{$Id}"
+  method: GET
