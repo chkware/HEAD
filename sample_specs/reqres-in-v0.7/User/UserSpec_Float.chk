@@ -1,7 +1,7 @@
 version: Rest-Runner/Basic:Spec:0.7
 
 using:
-  - UserRequest
+  - User/UserRequest
 
 spec:
   with:
