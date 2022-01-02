@@ -1,0 +1,18 @@
+version: Rest-Runner/Basic:Spec:0.7
+
+using:
+  - Env
+
+vars:
+  Id: ~
+
+request:
+  path: "{$Env.server}/user/{$Id}"
+  method: GET
+
+spec:
+  with:
+    Id: 3
+
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 200}
