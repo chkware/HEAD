@@ -1,0 +1,11 @@
+version: Rest-Runner/Basic:Spec:0.7
+
+using:
+  - User-HttpRequest
+
+spec:
+  with:
+    Id: 3.2
+
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 404}
