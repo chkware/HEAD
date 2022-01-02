@@ -1,0 +1,8 @@
+version: Rest-Runner/Basic:Spec:0.7
+
+using:
+ - UserUpdatePartialRequest
+
+spec:
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 200}
