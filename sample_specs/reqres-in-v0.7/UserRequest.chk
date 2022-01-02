@@ -1,5 +1,5 @@
 version: Rest-Runner/Basic:Http:0.7
-describe: User-HttpRequest {$Id}
+describe: UserRequest {$Id}
 
 using:
   - Env
