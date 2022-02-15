@@ -1,0 +1,17 @@
+version: Rest-Runner/Basic:Spec:0.6
+
+using:
+  - UserCreate/Request
+
+vars:
+  jsonBody: {
+    "name": "Neo",
+    "job": "the-one"
+  }
+
+spec:
+  with:
+    createBody: {$jsonBody}
+
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 201}

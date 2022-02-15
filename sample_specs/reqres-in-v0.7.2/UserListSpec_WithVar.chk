@@ -1,0 +1,16 @@
+version: Rest-Runner/Basic:Spec:0.7
+describe: UserListSpec_WithVar {$Page?}
+
+using:
+- Env
+
+vars:
+  Page: 1
+
+request:
+  method: GET
+  path: "{$Env.server}/users?page={$Page}"
+
+spec:
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 200}

@@ -1,0 +1,9 @@
+version: Rest-Runner/Basic:Http:0.7.1
+
+request:
+  path: "https://reqres.in/api/users/2"
+  method: PUT
+  body: {
+    "name": "morpheus",
+    "job": "zion resident"
+  }

@@ -1,0 +1,16 @@
+version: Rest-Runner/Basic:Http:0.6
+describe: Request {$createBody?}
+
+using: 
+  - Env
+
+vars:
+  createBody: {
+    "name": "Morpheus",
+    "job": "leader"
+  }
+
+request:
+  path: "{$Env.server}/users"
+  method: POST
+  body: {$createBody}
