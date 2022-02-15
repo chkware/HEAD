@@ -1,5 +1,5 @@
 version: Rest-Runner/Basic:Http:0.7
 
 request:
-  path: https://reqres.in/api/user/1
+  path: https://reqres.in/api/users/1
   method: GET

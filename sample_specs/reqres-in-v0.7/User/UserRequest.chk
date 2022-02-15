@@ -8,5 +8,5 @@ vars:
   Id: 1
 
 request:
-  path: "{$Env.server}/user/{$Id}"
+  path: "{$Env.server}/users/{$Id}"
   method: GET
