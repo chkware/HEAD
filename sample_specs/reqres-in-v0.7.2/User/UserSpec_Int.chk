@@ -1,11 +1,10 @@
-version: Rest-Runner/Basic:Spec:0.7
-
-using:
-  - User/UserRequest
+version: default:spec:0.7.2
 
 spec:
+  for: User/UserRequest
+
   with:
     Id: 2
 
   asserts:
-    - {type: AssertEquals, actual: .code, expected: 404}
+    - {type: AssertEquals, actual: .code, expected: 200}
