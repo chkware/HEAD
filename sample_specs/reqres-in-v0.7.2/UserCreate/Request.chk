@@ -1,16 +1,16 @@
-version: Rest-Runner/Basic:Http:0.6
-describe: Request {$createBody?}
-
-using: 
-  - Env
+version: default:http:0.7.2
+describe: Request {createBody}
 
 vars:
+  _import_: [../Env]
+
   createBody: {
     "name": "Morpheus",
     "job": "leader"
   }
 
 request:
-  path: "{$Env.server}/users"
+  path: "{Env.server}/users"
   method: POST
-  body: {$createBody}
+  body[json]:
+    _ref_: createBody

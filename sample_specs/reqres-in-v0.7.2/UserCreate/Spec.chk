@@ -1,8 +1,6 @@
-version: Rest-Runner/Basic:Spec:0.6
-
-using:
-  - UserCreate/Request
+version: default:spec:0.7.2
 
 spec:
+  for: ./Request
   asserts:
     - {type: AssertEquals, actual: .code, expected: 201}
