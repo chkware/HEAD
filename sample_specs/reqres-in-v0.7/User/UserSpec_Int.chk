@@ -1,9 +1,7 @@
 version: Rest-Runner/Basic:Spec:0.7
 
-using:
-  - User/UserRequest
-
 spec:
+  for: ./UserRequest
   with:
     Id: 2
 

@@ -1,13 +1,11 @@
-version: Rest-Runner/Basic:Spec:0.7
-
-using:
-  - Env
+version: default:spec:0.7.2
 
 vars:
+  _import_: [../Env]
   Id: ~
 
 request:
-  path: "{$Env.server}/user/{$Id}"
+  path: "{Env.server}/user/{Id}"
   method: GET
 
 spec:
