@@ -13,4 +13,6 @@ request:
   path: "{Env.server}/users"
   method: POST
   body[json]:
-    _ref_: createBody
+    _inject_: createBody
+
+expose: [.body]
