@@ -1,8 +1,7 @@
-version: default:spec:0.7.2
+version: Rest-Runner/Basic:Spec:0.7
 
 spec:
-  for: User/UserRequest
-
+  for: ./UserRequest
   with:
     Id: "JustStr"
 

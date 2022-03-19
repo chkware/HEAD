@@ -1,8 +1,7 @@
-version: default:spec:0.7.2
+version: default:http:0.7.2
 
 spec:
-  for: User/UserRequest
-
+  for: ./UserRequest
   with:
     Id: 3.2
 
