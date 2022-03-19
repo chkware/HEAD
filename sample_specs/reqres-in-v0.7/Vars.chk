@@ -1,0 +1,6 @@
+version: 'default:variable:0.7.2'
+
+_import_: [ENV]
+
+varA: GET
+varB: '{ENV.SHELL}'
