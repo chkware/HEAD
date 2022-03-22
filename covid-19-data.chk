@@ -7,4 +7,4 @@ request:
   method: GET
   headers:
     X-RapidAPI-Host: "covid-19-data.p.rapidapi.com"
-    X-RapidAPI-Key: "139f29cb37msh49c7738859d8e90p11f702jsn4fcabe322936"
+    X-RapidAPI-Key: "YOUR-API-KEY"
