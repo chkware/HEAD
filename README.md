@@ -1,7 +1,8 @@
-# DOCS
+# HEAD 
 
-All `chkware` planning docs.
+`chkware` planning docs.
 
-#### Introduction
+Purpose of this repository to store following:
 
-`chkware` is a cli application the automates web fetching & testing. Think like you're able to maintain source code, but without writing it. Completely based on YAML configuration, and very less keywords and functionality to learn.
+- Draft / final version of specification files by iteration
+- Draft / final version of project focus, etc
