@@ -1,0 +1,14 @@
+version: 'default:test-spec:0.7.2'
+describe: UserListSpec_WithVar {Page?}
+
+variable: 
+  _import_: ['Env']
+  Page: 1
+
+request:
+  method: GET
+  path: "{Env.server}/users?page={Page}"
+
+spec:
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 200}

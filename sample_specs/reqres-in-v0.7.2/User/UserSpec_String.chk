@@ -1,10 +1,9 @@
-version: default:spec:0.7.2
+version: default:test-spec:0.7.2
 
 spec:
   for: User/UserRequest
-
   with:
-    Id: 3.2
+    Id: "JustStr"
 
   asserts:
     - {type: AssertEquals, actual: .code, expected: 404}

@@ -1,4 +1,5 @@
 ---
+version: 'default:http:0.7.2'
 request:
   url: https://covid-19-data.p.rapidapi.com/report/country/code
   url_params:

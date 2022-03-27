@@ -1,0 +1,11 @@
+version: 'default:http:0.7.2'
+
+variable: 
+  _import_: ['Env']
+
+request:
+  path: "{Env.server}/users/2"
+  method: PATCH
+  body: {
+    "job": "zion resident"
+  }

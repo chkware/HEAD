@@ -1,0 +1,10 @@
+version: default:http:0.7.2
+describe: UserRequest {Id}
+
+variable:
+  _import_: [Env]
+  Id: 1
+
+request:
+  path: "{Env.server}/users/{Id}"
+  method: GET

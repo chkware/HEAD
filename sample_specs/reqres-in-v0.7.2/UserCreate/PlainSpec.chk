@@ -1,0 +1,6 @@
+version: default:test-spec:0.7.2
+
+spec:
+  for: UserCreate/PlainRequest
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 201}

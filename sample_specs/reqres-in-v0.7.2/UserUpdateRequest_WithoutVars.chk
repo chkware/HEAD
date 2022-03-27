@@ -1,0 +1,9 @@
+version: 'default:test-http:0.7.2'
+
+request:
+  path: "https://reqres.in/api/users/2"
+  method: PUT
+  body: {
+    "name": "morpheus",
+    "job": "zion resident"
+  }

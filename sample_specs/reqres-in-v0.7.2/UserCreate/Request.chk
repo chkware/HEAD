@@ -1,0 +1,18 @@
+version: default:http:0.7.2
+describe: Request {createBody}
+
+variable:
+  _import_: [Env]
+
+  createBody: {
+    "name": "Morpheus",
+    "job": "leader"
+  }
+
+request:
+  path: "{Env.server}/users"
+  method: POST
+  body[json]:
+    _inject_: createBody
+
+expose: [.body]

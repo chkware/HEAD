@@ -1,0 +1,23 @@
+version: 'default:test-spec:0.7.2'
+
+variable: 
+  _import_: ['Env']
+  Id: 2
+  Body: {
+    "name": "morpheus",
+    "job": "zion resident"
+  }
+
+request:
+  path: "{Env.server}/users/{Id}"
+  method: PUT
+  body: {Body}
+
+spec:
+  # # can replace variable like this
+  # with:
+  #   body: {
+  #     "other": "data"
+  #   }
+  asserts:
+    - {type: AssertEquals, actual: .code, expected: 200}

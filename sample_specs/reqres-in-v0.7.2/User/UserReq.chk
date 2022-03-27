@@ -1,0 +1,14 @@
+version: 'default:http:0.7.2'
+
+variable:
+  _import_: ['Vars', 'Vars2']
+  Id: 2
+
+request:
+  url: '{Vars2.server}/api/users/{Id}'
+  method: '{Vars.varA}'
+
+  url_params:
+    bb: '{Vars.varB}'
+    bc: '{Vars2.varB}'
+

@@ -1,12 +1,11 @@
-version: Rest-Runner/Basic:Http:0.7
-describe: UserRequest {$Id}
-
-using:
-  - Env
+version: default:spec:0.7.2
+describe: UserRequest {Id}
 
 vars:
   Id: 1
 
 request:
   path: "{$Env.server}/users/{$Id}"
+  # path_2: {Env.$server}/users/{$Id}
+  # path_3: '{{ Env.server }}/users/{{ Id }}'
   method: GET
