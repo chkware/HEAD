@@ -1,13 +1,13 @@
 version: default:spec:0.7.2
 
-vars:
+variable:
   jsonBody: {
     "name": "Neo",
     "job": "the-one"
   }
 
 spec:
-  for: ./Request
+  for: UserCreate/Request
   with:
     createBody: {jsonBody}
 

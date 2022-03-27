@@ -1,7 +1,7 @@
 version: default:spec:0.7.2
 
-vars:
-  _import_: [../Env]
+variable:
+  _import_: [Env]
   Id: ~
 
 request:

@@ -1,9 +1,7 @@
-version: Rest-Runner/Basic:Spec:0.7
+version: 'default:spec:0.7.2'
 
-using:
-  - Env
-
-vars:
+variable: 
+  _import_: ['Env']
   Id: 2
   Body: {
     "name": "morpheus",
@@ -11,9 +9,9 @@ vars:
   }
 
 request:
-  path: "{$Env.server}/users/{$Id}"
+  path: "{Env.server}/users/{Id}"
   method: PUT
-  body: {$Body}
+  body: {Body}
 
 spec:
   # # can replace variable like this

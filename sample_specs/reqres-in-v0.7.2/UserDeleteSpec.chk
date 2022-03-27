@@ -1,11 +1,10 @@
-version: Rest-Runner/Basic:Spec:0.7
+version: 'default:spec:0.7.2'
 
-using: [
-  Env
-]
+variable:
+  _import_: ['Env']
 
 request:
-  path: "{$Env.server}/users/2"
+  path: "{Env.server}/users/2"
   method: DELETE
 
 spec:

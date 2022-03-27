@@ -1,8 +1,8 @@
 version: default:http:0.7.2
 describe: Request {createBody}
 
-vars:
-  _import_: [../Env]
+variable:
+  _import_: [Env]
 
   createBody: {
     "name": "Morpheus",

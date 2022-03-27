@@ -1,10 +1,10 @@
-version: Rest-Runner/Basic:Http:0.7
+version: 'default:http:0.7.2'
 
-using:
-  - Env
+variable: 
+  _import_: ['Env']
 
 request:
-  path: "{$Env.server}/users/2"
+  path: "{Env.server}/users/2"
   method: PATCH
   body: {
     "job": "zion resident"

@@ -1,7 +1,7 @@
 version: 'default:http:0.7.2'
 
-var:
-  _import_: ['./Vars', 'tests/resources/storage/sample_config/Vars2']
+variable:
+  _import_: ['Vars', 'Vars2']
   Id: 2
 
 request:

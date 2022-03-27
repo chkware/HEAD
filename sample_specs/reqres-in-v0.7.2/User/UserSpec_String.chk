@@ -1,7 +1,7 @@
 version: default:spec:0.7.2
 
 spec:
-  for: ./UserRequest
+  for: User/UserRequest
   with:
     Id: "JustStr"
 

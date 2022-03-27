@@ -1,15 +1,13 @@
-version: Rest-Runner/Basic:Spec:0.7
-describe: UserListSpec_WithVar {$Page?}
+version: 'default:spec:0.7.2'
+describe: UserListSpec_WithVar {Page?}
 
-using:
-- Env
-
-vars:
+variable: 
+  _import_: ['Env']
   Page: 1
 
 request:
   method: GET
-  path: "{$Env.server}/users?page={$Page}"
+  path: "{Env.server}/users?page={Page}"
 
 spec:
   asserts:
