@@ -1,6 +1,6 @@
 version: default:test-spec:0.7.2
 
-variable:
+variables:
   jsonBody: {
     "name": "Neo",
     "job": "the-one"

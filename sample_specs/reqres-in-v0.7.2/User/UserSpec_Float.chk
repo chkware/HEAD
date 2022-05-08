@@ -3,7 +3,7 @@ version: default:test-spec:0.7.2
 spec:
   for: User/UserRequest
   with:
-    Id: 3.2
+    $Id: 3.2
 
   asserts:
     - {type: AssertEquals, actual: .code, expected: 404}

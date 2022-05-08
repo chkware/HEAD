@@ -1,8 +1,8 @@
 version: default:http:0.7.2
-describe: Request {createBody}
+describe: Request
 
-variable:
-  _import_: [Env]
+variables:
+  ::import: [Env]
 
   createBody: {
     "name": "Morpheus",
@@ -13,6 +13,5 @@ request:
   path: "{Env.server}/users"
   method: POST
   body[json]:
-    _inject_: createBody
+    _[inject]_: $createBody
 
-expose: [.body]

@@ -1,13 +1,13 @@
 version: 'default:test-spec:0.7.2'
-describe: UserListSpec_WithVar {Page?}
+describe: UserListSpec_WithVar
 
-variable: 
-  _import_: ['Env']
+variables: 
+  ::import: ['Env']
   Page: 1
 
 request:
   method: GET
-  path: "{Env.server}/users?page={Page}"
+  path: "{$Env.server}/users?page={$Page}"
 
 spec:
   asserts:

@@ -1,11 +1,11 @@
 version: 'default:test-spec:0.7.2'
 
 variable: 
-  _import_: ['Env']
+  ::import: ['Env']
 
 request:
   method: GET
-  path: "{Env.server}/users?page=1"
+  path: "{$Env.server}/users?page=1"
 
 spec:
   asserts:
