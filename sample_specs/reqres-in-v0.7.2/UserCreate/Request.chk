@@ -10,8 +10,8 @@ variables:
   }
 
 request:
-  path: "{Env.server}/users"
+  path: "{$Env.server}/users"
   method: POST
   body[json]:
-    _[inject]_: $createBody
+    ::inject: $createBody
 
