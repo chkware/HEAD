@@ -1,15 +1,18 @@
 version: default:test-spec:0.7.2
 
-variables:
-  jsonBody: {
-    "name": "Neo",
-    "job": "the-one"
-  }
+# variables:
+#   jsonBody: {
+#     "name": "Neo",
+#     "job": "the-one"
+#   }
 
 spec:
   for: UserCreate/Request
   with:
-    createBody: {jsonBody}
+    # createBody:
+    #   ::inject: $jsonBody
+    Name: "Neo"
+    Job: "choosen-one"
 
   asserts:
     - {type: AssertEquals, actual: .code, expected: 201}

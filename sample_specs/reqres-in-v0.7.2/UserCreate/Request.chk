@@ -2,16 +2,22 @@ version: default:http:0.7.2
 describe: Request
 
 variables:
-  ::import: [Env]
+  # ::import: [Env]
 
-  createBody: {
-    "name": "Morpheus",
-    "job": "leader"
-  }
+  # createBody: {
+  #   "name": "Morpheus",
+  #   "job": "leader"
+  # }
+
+  Name: 'Morpheus'
+  Job: 'leader'
 
 request:
   path: "{$Env.server}/users"
   method: POST
-  body[json]:
-    ::inject: $createBody
+  body[json]: {
+      'name': $Name,
+      'job': $Job,
+    }
+    # ::inject: $createBody
 
