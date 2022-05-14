@@ -9,7 +9,7 @@ variable:
   }
 
 request:
-  path: "{Env.server}/users/{Id}"
+  path: "{$Env.server}/users/{$Id}"
   method: PUT
   body: {Body}
 
