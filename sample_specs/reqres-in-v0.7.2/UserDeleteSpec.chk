@@ -2,11 +2,16 @@ version: 'default:test-spec:0.7.2'
 
 variables:
   ::import: ['Env']
+  Response:
 
 request:
   path: "{$Env.server}/users/2"
   method: DELETE
+  return: ~
 
 spec:
+  execute:
+    file: self
+    result: $Response
   asserts:
-    - {type: AssertEquals, actual: .code, expected: 204}
+    - {type: AssertEquals, actual: $Response.code, expected: 204}

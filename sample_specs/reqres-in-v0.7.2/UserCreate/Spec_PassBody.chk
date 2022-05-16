@@ -4,10 +4,12 @@ variables:
   Response: ~
 
 spec:
-  execute: [file: 'UserCreate/Request', result: $Response]
-  with:
-    Name: "Neo"
-    Job: "choosen-one"
+  execute:
+    file: 'UserCreate/Request'
+    result: $Response
+    with:
+      Name: "Neo"
+      Job: "choosen-one"
 
   asserts:
     - {type: AssertEquals, actual: $Response.code, expected: 201, silent: true}

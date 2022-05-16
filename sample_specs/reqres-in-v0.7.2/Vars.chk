@@ -3,4 +3,4 @@ version: 'default:variable:0.7.2'
 ::import: [ENV]
 
 varA: GET
-varB: '{$ENV.SHELL}'
+varB: $ENV.SHELL
