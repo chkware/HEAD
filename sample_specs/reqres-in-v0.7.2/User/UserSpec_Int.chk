@@ -5,7 +5,7 @@ variables:
 
 spec:
   execute:
-    file: User/UserRequest
+    file: User/UserRequest.chk
     with:
       $Id: 2
     result: $Response
