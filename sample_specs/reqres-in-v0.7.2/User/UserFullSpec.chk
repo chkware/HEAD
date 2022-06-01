@@ -14,7 +14,7 @@ request:
 spec:
   execute:
     file: self
-    result: $Response
+    result: $Resp_Req
     with:
       $Id: 3
 
