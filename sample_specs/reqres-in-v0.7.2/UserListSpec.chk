@@ -1,12 +1,17 @@
 version: 'default:testcase:0.7.2'
 
-variable: 
-  _import_: ['Env']
+variables: 
+  ::import: ['Env']
+  Code: ~
 
 request:
   method: GET
-  path: "{Env.server}/users?page=1"
+  path: "{$Env.server}/users?page=1"
+  return: .code
 
 spec:
+  execute:
+    file: self
+    result: $Code
   asserts:
-    - {type: AssertEquals, actual: .code, expected: 200}
+    - {type: AssertEquals, actual: $Code, expected: 200}
