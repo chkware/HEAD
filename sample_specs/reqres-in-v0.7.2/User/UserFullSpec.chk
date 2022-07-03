@@ -1,16 +1,24 @@
 version: default:test-spec:0.7.2
 
-variable:
-  _import_: [Env]
+variables:
+  ::import: [Env]
   Id: ~
+  Resp_Req: ~
+  Resp_Spec: ~
 
 request:
-  path: "{Env.server}/user/{Id}"
+  path: "{$Env.server}/user/{$Id}"
   method: GET
+  return: ~
 
 spec:
-  with:
-    Id: 3
+  execute:
+    file: self
+    result: $Resp_Req
+    with:
+      $Id: 3
 
   asserts:
-    - {type: AssertEquals, actual: .code, expected: 200}
+    - {type: AssertEquals, actual: $Resp_Req.code, expected: 200, silent: true}
+
+  return: $Resp_Spec

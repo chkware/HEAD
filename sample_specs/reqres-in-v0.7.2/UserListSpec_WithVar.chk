@@ -1,14 +1,18 @@
 version: 'default:test-spec:0.7.2'
-describe: UserListSpec_WithVar {Page?}
+describe: UserListSpec_WithVar
 
-variable: 
-  _import_: ['Env']
+variables: 
+  ::import: ['Env']
   Page: 1
+  Response: ~
 
 request:
   method: GET
-  path: "{Env.server}/users?page={Page}"
+  path: "{$Env.server}/users?page={$Page}"
 
 spec:
+  execute:
+    file: self
+    result: $Response
   asserts:
-    - {type: AssertEquals, actual: .code, expected: 200}
+    - {type: AssertEquals, actual: $Response.code, expected: 200}
