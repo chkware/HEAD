@@ -1,5 +1,5 @@
-version: 'default:test-spec:0.7.2'
-describe: UserListSpec_WithVar
+version: 'default:testcase:0.7.2'
+describe: UserListSpec_WithVar {Page?}
 
 variables: 
   ::import: ['Env']
