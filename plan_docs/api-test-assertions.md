@@ -21,3 +21,39 @@ This document lists assertions we need to perform in API tests
 - Verify Request Type
 - Validate Response Payload
 - Verify proper and relevant error message is received for negative testing
+
+
+## Assertions
+
+- assertIsMap
+- assertIsList
+- assertIsBool
+- assertIsFloat
+- assertIsInt
+- assertIsNumeric
+- assertIsString
+- assertIsNotNumeric
+- assertNull
+- assertEmpty : object
+- assertEquals : object
+- assertFalse : bool
+- assertTrue
+
+- assertListContains:list
+- assertMapContains: dict
+- assertStrContains: str
+
+- assertMapHasKey: dict
+- assertMapHasKeys: dict
+- assertMapDonotHasKeys: dict
+- assertMapExactKeys: dict
+- assertMapKeyCount: dict
+
+- assertListHasIndex: list
+
+- assertCount: list
+
+- assertGreaterThan: int, float
+- assertGreaterThanOrEqual: int, float
+- assertLessThan: : int, float
+- assertLessThanOrEqual: : int, float
