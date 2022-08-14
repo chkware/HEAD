@@ -25,7 +25,7 @@ This document lists assertions we need to perform in API tests
 
 ## Assertions
 
-- assertIsMap
+-[ ] assertIsMap
 - assertIsList
 - assertIsBool
 - assertIsFloat
