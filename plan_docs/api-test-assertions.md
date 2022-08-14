@@ -26,34 +26,34 @@ This document lists assertions we need to perform in API tests
 ## Assertions
 
 - [ ] assertIsMap
-- assertIsList
-- assertIsBool
-- assertIsFloat
-- assertIsInt
-- assertIsNumeric
-- assertIsString
-- assertIsNotNumeric
-- assertNull
-- assertEmpty : object
-- assertEquals : object
-- assertFalse : bool
-- assertTrue
+- [ ] assertIsList
+- [ ] assertIsBool
+- [ ] assertIsFloat
+- [ ] assertIsInt
+- [ ] assertIsNumeric
+- [ ] assertIsString
+- [ ] assertIsNotNumeric
+- [ ] assertNull
+- [x] assertEmpty : object
+- [x] assertEquals : object
+- [x] assertFalse : bool
+- [x] assertTrue
 
-- assertListContains:list
-- assertMapContains: dict
-- assertStrContains: str
+- [ ] assertListContains:list
+- [ ] assertMapContains: dict
+- [ ] assertStrContains: str
 
-- assertMapHasKey: dict
-- assertMapHasKeys: dict
-- assertMapDonotHasKeys: dict
-- assertMapExactKeys: dict
-- assertMapKeyCount: dict
+- [ ] assertMapHasKey: dict
+- [ ] assertMapHasKeys: dict
+- [ ] assertMapDonotHasKeys: dict
+- [ ] assertMapExactKeys: dict
+- [ ] assertMapKeyCount: dict
 
-- assertListHasIndex: list
+- [ ] assertListHasIndex: list
 
-- assertCount: list
+- [ ] assertCount: list
 
-- assertGreaterThan: int, float
-- assertGreaterThanOrEqual: int, float
-- assertLessThan: : int, float
-- assertLessThanOrEqual: : int, float
+- [ ] assertGreaterThan: int, float
+- [ ] assertGreaterThanOrEqual: int, float
+- [ ] assertLessThan: : int, float
+- [ ] assertLessThanOrEqual: : int, float
