@@ -1,0 +1,12 @@
+version: 'default:http:0.7.2'
+
+variables: 
+  ::import: ['Env']
+
+request:
+  path: "{$Env.server}/users/2"
+  method: PATCH
+  body: {
+    "job": "zion resident"
+  }
+  return: .code

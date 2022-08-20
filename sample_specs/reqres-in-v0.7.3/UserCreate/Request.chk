@@ -1,0 +1,21 @@
+version: default:http:0.7.2
+describe: Request
+
+variables:
+  Name: 'Morpheus'
+  Job: 'leader'
+  Response: 
+  Server: https://reqres.io/api/v1
+
+request:
+  path: "{$Server}/users"
+  method: POST
+  body[json]: {
+    'name': $Name,
+    'job': $Job,
+  }
+  return: .body
+
+
+# why `return`?
+#   - in future I can add more operation on it

@@ -1,0 +1,14 @@
+version: default:testcase:0.7.2
+
+variables:
+  Response:
+
+spec:
+  execute:
+    file: User/UserRequest.chk
+    with:
+      $Id: "JustStr"
+    result: $Response
+
+  asserts:
+    - {type: AssertEquals, actual: $Response.code, expected: 404}

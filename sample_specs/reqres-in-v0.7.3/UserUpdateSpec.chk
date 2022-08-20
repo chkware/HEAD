@@ -1,0 +1,26 @@
+version: 'default:testcase:0.7.2'
+
+variables: 
+  ::import: ['Env']
+  Id: 2
+  Body: {
+    "name": "morpheus",
+    "job": "zion resident"
+  }
+  Code: ~
+
+request:
+  path: "{$Env.server}/users/{$Id}"
+  method: PUT
+  body: 
+    ::inject: $Body
+  return: .code
+
+spec:
+  # # can replace variable like this
+  # with:
+  #   body: {
+  #     "other": "data"
+  #   }
+  asserts:
+    - {type: AssertEquals, actual: $Code, expected: 200}

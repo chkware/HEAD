@@ -1,0 +1,17 @@
+version: default:http:0.7.2
+
+variables:
+  ::import:
+    - Env
+    - UV: UserCreate/Vars
+
+  Id: 1
+  Response: ~
+
+# 1. too long path to include to use the veriable when file path is long
+# 2. user need to understand magic to use basic feature
+
+request:
+  path: "{$Env.server}/users/{$Id}"
+  method: $UserCreate/Vars.method
+  return: $Response
