@@ -14,8 +14,4 @@ request:
     'name': $Name,
     'job': $Job,
   }
-  return: .body
-
-
-# why `return`?
-#   - in future I can add more operation on it
+  return: .code

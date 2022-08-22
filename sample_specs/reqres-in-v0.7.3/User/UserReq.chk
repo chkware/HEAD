@@ -1,7 +1,7 @@
-version: 'default:http:0.7.2'
+version: 'default:http:0.7.3'
 
 variables:
-  ::import: ['Vars', 'Vars2']
+  __import__: ['.Vars', '.Vars2']
   Id: 2
 
 request:

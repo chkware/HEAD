@@ -1,8 +1,7 @@
-version: 'default:testcase:0.7.2'
+version: 'default:testcase:0.7.3'
 describe: UserListSpec_WithVar {Page?}
 
 variables: 
-  __import__: ['Env']
   Page: 1
   Response: ~
   Code: ~
@@ -11,11 +10,14 @@ request:
   method: GET
   path: "{$Env.server}/users?page={$Page}"
   return: [
-    .request.response.code: $Code,
-    .request.response.headers: $Headers
+    .response.code: $Code,
+    .response.headers: $Headers
   ]
 
 spec:
   execute: ~
   asserts:
-    - {type: AssertEquals, actual: .request.response.code, expected: 200}
+    - {type: AssertEquals, actual: $Code, expected: 200}
+
+expose: 
+  - $Headers

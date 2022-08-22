@@ -1,6 +1,5 @@
-version: 'default:variable:0.7.2'
+version: 'default:variable:0.7.3'
 
-::import: [ENV]
-
-varA: GET
-varB: $ENV.SHELL
+variables:
+  varA: GET
+  varB: $ENV.SHELL

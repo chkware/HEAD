@@ -1,4 +1,5 @@
 version: 'default:variable:0.7.2'
 
-server: 'https://reqres.in'
-varB: 20
+variables:
+  server: 'https://reqres.in'
+  varB: 20

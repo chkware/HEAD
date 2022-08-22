@@ -1,4 +1,4 @@
-version: default:testcase:0.7.2
+version: default:testcase:0.7.3
 
 variables:
   Code: ~
@@ -6,8 +6,8 @@ variables:
 
 spec:
   execute:
-    file: UserCreate/PlainRequest.chk
-    result: [$Code, $Headers]
+    file: .UserCreate/PlainRequest.chk
+    result: [$Code, _]
 
   asserts:
     - {type: AssertEquals, actual: $Code, expected: 201}

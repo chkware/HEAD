@@ -1,8 +1,8 @@
-version: 'default:testcase:0.7.2'
+version: 'default:testcase:0.7.3'
 
 variables:
-  ::import: ['Env']
-  Response:
+  __import__: ['Env']
+  Response: ~
 
 request:
   path: "{$Env.server}/users/2"

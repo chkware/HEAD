@@ -1,11 +1,11 @@
 version: default:testcase:0.7.2
 
 variables:
-  Response:
+  Response: ~
 
 spec:
   execute:
-    file: User/UserRequest.chk
+    file: .UserRequest.chk
     with:
       $Id: "JustStr"
     result: $Response

@@ -1,26 +1,29 @@
-version: 'default:testcase:0.7.2'
+version: 'default:testcase:0.7.3'
 
 variables: 
-  ::import: ['Env']
+  # __import__: ['Env']
   Id: 2
   Body: {
     "name": "morpheus",
     "job": "zion resident"
   }
   Code: ~
+  ... :
+    - Env: .Env
 
 request:
   path: "{$Env.server}/users/{$Id}"
   method: PUT
-  body: 
-    ::inject: $Body
-  return: .code
+  body: $Body # inject Body here
+  all_include: 
+    ... :  # unpack statement
+      - $Body
+      - id: $Id
+    class: 1
+
+  return: 
+    - .code: $Code
 
 spec:
-  # # can replace variable like this
-  # with:
-  #   body: {
-  #     "other": "data"
-  #   }
   asserts:
     - {type: AssertEquals, actual: $Code, expected: 200}

@@ -1,7 +1,7 @@
 version: 'default:http:0.7.2'
 
 variables: 
-  ::import: ['Env']
+  __import__: ['Env']
 
 request:
   path: "{$Env.server}/users/2"
