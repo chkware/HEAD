@@ -2,7 +2,7 @@ version: 'default:http:0.1.0'
 
 variables: 
   ::import::
-    - Env: Env
+    - Env: $ENV
 
 request:
   path: "{$Env.server}/users/2"

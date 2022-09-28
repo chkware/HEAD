@@ -3,7 +3,7 @@ describe: UserListSpec_WithVar {Page?}
 
 variables: 
   ::import::
-    - Env: Env
+    - Env: $ENV
 
   Page: 1
   Response: ~

@@ -4,7 +4,7 @@ variables:
   Id: 2
 
   ::import::
-    - Env: Env
+    - Env: $ENV
     - Vars: .Vars
     - Vars2: Vars2
 
