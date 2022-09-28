@@ -1,0 +1,17 @@
+version: 'default:http:0.7.2'
+
+variables:
+  Id: 2
+
+  ::import::
+    - Env: Env
+    - Vars: .Vars
+    - Vars2: Vars2
+
+request:
+  url: '{$Vars2.server}/api/users/{$Id}'
+  method: '{$Vars.varA}'
+
+  url_params:
+    bb: '{$Vars.varB}'
+    bc: '{$Vars2.varB}'

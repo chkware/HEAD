@@ -1,0 +1,27 @@
+version: default:testcase:0.7.2
+
+variables:
+  ::import:: [
+    Env: $ENV,
+  ]
+
+  Id: ~
+  Resp_Req: ~
+  Resp_Spec: ~
+
+request:
+  path: "{$Env.server}/user/{$Id}"
+  method: GET
+  return: ~
+
+spec:
+  execute:
+    file: self
+    result: $Resp_Req
+    with:
+      $Id: 3
+
+  asserts:
+    - {type: AssertEquals, actual: $Resp_Req.code, expected: 200, silent: true}
+
+  return: $Resp_Spec
