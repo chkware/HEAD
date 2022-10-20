@@ -1,0 +1,15 @@
+version: 'default:http:0.7.3'
+
+variables:
+  __import__:
+    - Vars: ../Vars.chk
+    - Vars2: ../Vars2.chk
+  Id: 2
+
+request:
+  url: '{$Vars2.server}/api/users/{$Id}'
+  method: '{$Vars.varA}'
+
+  url_params:
+    bb: '{$Vars.varB}'
+    bc: '{$Vars2.varB}'

@@ -1,0 +1,20 @@
+version: 'default:testcase:0.7.3'
+describe: "User list spec with varriable input"
+
+variables: 
+  Page: 1 :input:
+  Response: ~
+  Code: ~
+
+request:
+  method: GET
+  path: "{$_ENV.server}/users?page={$Page}"
+
+spec:
+  execute: ~
+  asserts:
+    - {type: AssertEquals, actual: .response.code, expected: 200}
+
+expose: 
+  - .response.code
+  - .response.headers
