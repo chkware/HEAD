@@ -12,8 +12,7 @@ request:
     "job": "leader"
   }
 
-  return:
-    - .response.code: $code
-    - .response.headers: $headers
+expose:
+  - .response.code
+  - .response.headers
 
-expose: [$code, $headers]

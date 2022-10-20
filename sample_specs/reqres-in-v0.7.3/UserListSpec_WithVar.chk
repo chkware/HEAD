@@ -9,15 +9,12 @@ variables:
 request:
   method: GET
   path: "{$Env.server}/users?page={$Page}"
-  return: [
-    .response.code: $Code,
-    .response.headers: $Headers
-  ]
 
 spec:
   execute: ~
   asserts:
-    - {type: AssertEquals, actual: $Code, expected: 200}
+    - {type: AssertEquals, actual: .response.code, expected: 200}
 
 expose: 
-  - $Headers
+  - .response.code
+  - .response.headers

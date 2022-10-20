@@ -9,7 +9,6 @@ variables:
 request:
   path: "{$Env.server}/user/{$Id}"
   method: GET
-  return: ~
 
 spec:
   execute:

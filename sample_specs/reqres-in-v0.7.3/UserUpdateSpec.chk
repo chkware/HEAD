@@ -21,9 +21,6 @@ request:
       - id: $Id
     class: 1
 
-  return: 
-    - .code: $Code
-
 spec:
   asserts:
-    - {type: AssertEquals, actual: $Code, expected: 200}
+    - {type: AssertEquals, actual: .response.code, expected: 200}

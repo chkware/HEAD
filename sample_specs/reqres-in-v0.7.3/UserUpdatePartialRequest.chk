@@ -9,4 +9,4 @@ request:
   body: {
     "job": "zion resident"
   }
-  return: .code
+

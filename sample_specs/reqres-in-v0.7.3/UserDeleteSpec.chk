@@ -7,7 +7,6 @@ variables:
 request:
   path: "{$Env.server}/users/2"
   method: DELETE
-  return: ~
 
 spec:
   execute:
