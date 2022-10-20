@@ -1,12 +1,11 @@
 version: 'default:testcase:0.7.2'
 
 variables: 
-  __import__: ['Env']
   Code: ~
 
 request:
   method: GET
-  path: "{$Env.server}/users?page=1"
+  path: "{$_ENV.server}/users?page=1"
 
 spec:
   execute:

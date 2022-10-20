@@ -8,7 +8,7 @@ variables:
 
 request:
   method: GET
-  path: "{$Env.server}/users?page={$Page}"
+  path: "{$_ENV.server}/users?page={$Page}"
 
 spec:
   execute: ~

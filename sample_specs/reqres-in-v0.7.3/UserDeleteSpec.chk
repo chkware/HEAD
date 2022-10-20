@@ -1,11 +1,10 @@
 version: 'default:testcase:0.7.3'
 
 variables:
-  __import__: ['Env']
   Response: ~
 
 request:
-  path: "{$Env.server}/users/2"
+  path: "{$_ENV.server}/users/2"
   method: DELETE
 
 spec:

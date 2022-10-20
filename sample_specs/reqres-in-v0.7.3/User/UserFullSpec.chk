@@ -1,7 +1,9 @@
 version: default:testcase:0.7.3
 
 variables:
-  __import__: [Env]
+  __import__: [
+    Env: ../Env.chk
+  ]
   Id: ~
   Resp_Req: ~
   Resp_Spec: ~

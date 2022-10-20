@@ -1,25 +1,19 @@
 version: 'default:testcase:0.7.3'
 
 variables: 
-  # __import__: ['Env']
+  __import__: 
+    - Env: './Env.chk'
   Id: 2
   Body: {
     "name": "morpheus",
     "job": "zion resident"
   }
   Code: ~
-  ... :
-    - Env: .Env
 
 request:
   path: "{$Env.server}/users/{$Id}"
   method: PUT
-  body: $Body # inject Body here
-  all_include: 
-    ... :  # unpack statement
-      - $Body
-      - id: $Id
-    class: 1
+  body: $Body
 
 spec:
   asserts:

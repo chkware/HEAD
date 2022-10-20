@@ -5,9 +5,9 @@ variables:
 
 spec:
   execute:
-    file: .UserRequest.chk
+    file: ./UserRequest.chk
     with:
-      $Id: 2
+      Id: 2
     result: $Response
 
   asserts:

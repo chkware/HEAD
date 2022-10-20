@@ -1,12 +1,7 @@
 version: 'default:http:0.7.2'
 
-variables: 
-  __import__: ['Env']
-
 request:
-  path: "{$Env.server}/users/2"
+  path: "{$_ENV.server}/users/2"
   method: PATCH
-  body: {
+  body:
     "job": "zion resident"
-  }
-

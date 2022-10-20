@@ -1,7 +1,9 @@
 version: 'default:http:0.7.3'
 
 variables:
-  __import__: ['.Vars', '.Vars2']
+  __import__:
+    - Vars: ../Vars.chk
+    - Vars2: ../Vars2.chk
   Id: 2
 
 request:

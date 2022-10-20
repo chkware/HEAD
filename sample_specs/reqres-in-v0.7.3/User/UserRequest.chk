@@ -2,12 +2,11 @@ version: default:http:0.7.3
 
 variables:
   __import__:
-    - Env
-    - UV: UserCreate/Vars
+    - UV: ~/Vars.chk
 
   Id: 1
   Response: ~
 
 request:
-  path: "{$Env.server}/users/{$Id}"
+  path: "{$_ENV.server}/users/{$Id}"
   method: $UV.method

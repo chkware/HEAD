@@ -5,7 +5,7 @@ variables:
 
 spec:
   execute:
-    file: '.Request.chk'
+    file: './Request.chk'
     result: $Response
     with:
       Name: "Neo"

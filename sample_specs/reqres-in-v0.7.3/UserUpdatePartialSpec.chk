@@ -1,12 +1,12 @@
 version: 'default:testcase:0.7.2'
 
 variables:
-  Code: ~
+  code: ~
 
 spec:
   execute:
-    file: .UserUpdatePartialRequest.chk
-    result: $Code
+    file: ./UserUpdatePartialRequest.chk
+    result: $code
 
   asserts:
-    - {type: AssertEquals, actual: $Code, expected: 200}
+    - {type: AssertEquals, actual: $code, expected: 200}

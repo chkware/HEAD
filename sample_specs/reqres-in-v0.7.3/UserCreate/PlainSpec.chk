@@ -6,7 +6,7 @@ variables:
 
 spec:
   execute:
-    file: .UserCreate/PlainRequest.chk
+    file: ~/UserCreate/PlainRequest.chk
     result: [$Code, _]
 
   asserts:
