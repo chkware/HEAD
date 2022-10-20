@@ -1,8 +1,8 @@
 version: 'default:testcase:0.7.3'
-describe: UserListSpec_WithVar {Page?}
+describe: "User list spec with varriable input"
 
 variables: 
-  Page: 1
+  Page: 1 :input:
   Response: ~
   Code: ~
 
