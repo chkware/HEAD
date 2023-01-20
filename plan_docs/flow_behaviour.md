@@ -20,7 +20,7 @@ behaviour of a flow
 
 ### Ingredients of flow
 
-```
+```yaml
 - run: ''
   vars: ''
   when: ''
@@ -37,6 +37,15 @@ behaviour of a flow
 - {when: '', loop: []}
 ```
 
+```yaml
+execute:
+  when: $Var lt $Var2
+  file: filename.chk,
+  with:
+    Var: "Val"
+  result:
+    - Var2
+```
 
 ### operator used in `when` and `exec`
 ```
