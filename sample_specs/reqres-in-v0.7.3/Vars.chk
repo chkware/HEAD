@@ -1,6 +1,0 @@
-version: 'default:variable:0.7.3'
-
-variables:
-  varA: GET
-  varB: $ENV.SHELL
-  method: POST

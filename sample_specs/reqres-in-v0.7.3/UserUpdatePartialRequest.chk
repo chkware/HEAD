@@ -1,7 +1,0 @@
-version: 'default:http:0.7.2'
-
-request:
-  path: "{$_ENV.server}/users/2"
-  method: PATCH
-  body:
-    "job": "zion resident"

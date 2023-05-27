@@ -1,5 +1,0 @@
-version: 'default:variable:0.7.2'
-
-variables:
-  server: 'https://reqres.in'
-  varB: 20
