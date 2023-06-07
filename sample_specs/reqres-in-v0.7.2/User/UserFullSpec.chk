@@ -1,24 +1,38 @@
-version: default:testcase:0.7.2
+# data may come from cli option --data, -D: json
+# data may come from stdin --data-stdin, -Di: json
+# data may come from fetch execute
+---
+version: default:validation:0.7.2
+
+variables[import]:
+  - E: Env.chk
 
 variables:
-  ::import: [Env]
-  Id: ~
-  Resp_Req: ~
-  Resp_Spec: ~
+  a: 1
+ 
+data:
+  from: external-file.chk
+  with:
+    A: 23
+    B: SWe
 
-request:
-  path: "{$Env.server}/user/{$Id}"
-  method: GET
-  return: ~
+asserts[import]:
+  - A: Some-Assert-File.chk
 
-spec:
-  execute:
-    file: self
-    result: $Resp_Req
-    with:
-      $Id: 3
+asserts:
+  - {type: AssertEquals, actual: $_data.code, expected: 200, silent: true}
+  - {type: A.AssertEquals, actual: $_data.code, expected: 200, silent: true}
 
-  asserts:
-    - {type: AssertEquals, actual: $Resp_Req.code, expected: 200, silent: true}
+expose:
+  - $_asserts_response
+  - $_data
 
-  return: $Resp_Spec
+---
+version: default:validation:0.7.2
+
+asserts:
+  - {type: AssertEquals, actual: $_data.code, expected: 200, silent: true}
+
+expose:
+  - $_asserts_response
+  - $_data
