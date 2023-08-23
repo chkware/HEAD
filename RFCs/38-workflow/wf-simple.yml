@@ -2,7 +2,7 @@ version: default:workflow:0.8.0
 id: someUniqueId
 
 variables:
-  data: <% _tasks.0.expose.0 %>
+  data: <% _tasks.0._expose.0 %>
 
 tasks:
   - name: Fetch some content from URL
@@ -14,6 +14,16 @@ tasks:
     uses: validate
     arguments:
       data: <% data %>
+
+  - name: Use the flow again
+    uses: workflow
+    arguments:
+      file: .
+      tasks: [
+        _task.0,
+        _task.1,
+      ]
+
     # run[interpreter="/usr/bin/env bash"]: |
     #   cd ~/do-here/
     #   bash some-script.sh
