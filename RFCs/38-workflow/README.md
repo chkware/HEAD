@@ -7,3 +7,7 @@ Following are key achievable for workflow in CHKware:
 - It can also contain tasks that describes scripts those can be run using `/usr/bin/env [SCRIPT-RUNTIME]`.
 - A workflow can contain another workflow as a task
 
+## Issues
+
+- how to determine fail in fetch?
+- how to determine fail in validate?
