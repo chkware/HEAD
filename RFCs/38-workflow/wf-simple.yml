@@ -2,18 +2,26 @@ version: default:workflow:0.8.0
 id: someUniqueId
 
 tasks:
-  - name: Fetch some content from URL
+  fetch_url_data:
+    name: Fetch some content from URL
     uses: fetch
     file: file-name.chk
     variables: {"var": 2}
 
-  - name: Validate the content is okay
+  validateTheContent:
+    name: Validate the content is okay
     uses: validate
     file: validate.chk
     variables: {"var": 2}
     arguments:
       data: <% _tasks.0._expose.0 %>
 
-  - name: Use the flow again
+  callFlowAgain:
+    name: Use the flow again
     uses: workflow
+    file: chk-workflow.chk
+
+  call_zsh_func:
+    name: Use the flow again
+    uses: shell
     file: chk-workflow.chk
