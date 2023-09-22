@@ -1,11 +1,16 @@
 version: default:workflow:0.8.0
 id: someUniqueId
 
-tasks:
-  - name: Fetch some content from URL
-    uses: fetch
-    file: file-name.chk
-    variables: {"var": 2}
+# run command: chk, shell
+# get and pass session data using _tasks
+# can pass arguments, and variables
+# reports on each steps??
+
+tasks: # list[Task]
+  - name: Fetch some content from URL # |
+    uses: fetch                       # | Task(Protocol)
+    file: file-name.chk               # | FetchTask, ValidateTask, ShellTask, FlowTask
+    variables: {"var": 2}             # | ChkwareCommandTask(Protocol, Task)
 
   - name: Validate the content is okay
     uses: validate
@@ -24,4 +29,4 @@ tasks:
       cd ..
       run-command.sh
       git add .
-      git commit -m '<? sdf ?>'
+      git commit -m '<% sdf %>'
