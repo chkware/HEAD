@@ -6,7 +6,7 @@ variables:
     # I admit this is strange, not YMLish, but clean
 
     child2 .some=int: <% value | lower %>
-    parent2 .some=str .some2 .some3=1,2,3: value
+    parent2 .some='str' .some2 .some3=(1,2,3) .some4=(a:'1',b:'2',c:'3') .some5=false: value
 
     # --- with [] and | ---
     # not this because it looks bad for multiple tags
@@ -25,12 +25,12 @@ variables:
     # behavior of body, type of body in fetch
     # more example of dot tags
 
-    body .xml: |
+    body .enc=xml: |
        <xml>
          <a int=true>Some</a>
        </xml>
 
-    body .json: {
+    body .enc=json: {
       a: "val1",
       b: 2
     }
