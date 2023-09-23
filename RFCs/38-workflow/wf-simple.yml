@@ -6,7 +6,7 @@ id: someUniqueId
 # can pass arguments, and variables
 # reports on each steps??
 
-tasks: # list[Task]
+tasks:                                # | list[Task]
   - name: Fetch some content from URL # |
     uses: fetch                       # | Task(Protocol)
     file: file-name.chk               # | FetchTask, ValidateTask, ShellTask, FlowTask
