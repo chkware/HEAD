@@ -1,14 +1,13 @@
 workflow:
 - title
-- tasks
-    @task(title="")
+- workgroup
     task_function()
     - title
-    - setps
-        @push_global
-        @push_previous_step
-        @push_previous_steps
-        @before_hook
-        @after_hook
+    - tesk
+        @pass_context
+        @pass_previous_step
+        @pass_steps
+        @before
+        @after
         @step(title, id)
         step_function() <- usually functions
