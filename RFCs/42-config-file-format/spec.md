@@ -34,14 +34,12 @@ Project config files are used to load configuration for the local system.
 
 ## File name
 
-The file named `.chkconfig`.
+The file named `chkconfig.toml`.
 
 ## Spec. structure
 
-```json
-{
-  "path": "/Users/0hsn/Works/chkware/cli",
-  "path_spec_cache": ".chkware_cache/spec_cache",
-  "path_log": ".chkware_cache/log"
-}
+```toml
+path = /Users/0hsn/Works/chkware/cli
+path_spec_cache = .chkware_cache/spec_cache
+path_log = .chkware_cache/log
 ```

@@ -1,5 +1,15 @@
 **Document object representation v1**
 
+Purpose:
+
+
+Implement lock machanizm such it away that only .lock files can be used to run next time
+
+  - Need to create a tree of document in a workflow
+  - Check the tree for any repeating /cyclic document dependency
+
+How?
+
 - need meta block
   - document unique id
   - document path
